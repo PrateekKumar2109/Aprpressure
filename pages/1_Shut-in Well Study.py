@@ -194,8 +194,11 @@ def pressure_temp_plot(well_name,dataframe):
 def pressure_plot_down(well_name,dataframe):
     colors = {'oil':'green', 'gas':'red', 'water':'blue'}
     fig=plt.figure(figsize=(3.6,4),dpi=30)
-    plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='black',lw=1.5,label='Pressure')
-    plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',c=df_final['Fluid type'].map(colors))
+    plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='black',lw=1,label='Pressure')
+    #plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',c=df_final['Fluid type'].map(colors))
+    groups = df_final.groupby('Fluid type')
+    for name, group in groups:
+        plt.scatter(group.PRESSURE, group.TVDSS, label=name,color=colors[name],,marker='o',s=10)
     plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
     plt.gca().invert_yaxis()
     plt.ylabel("Depth in TVDSS",color="black",fontsize=10)
