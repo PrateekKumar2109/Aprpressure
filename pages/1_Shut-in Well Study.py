@@ -13,7 +13,7 @@ st.sidebar.header("User input parameter")
 kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
 
 kbth=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.32)
-de=st.sidebar.slider(' Oil top Dotted line',0,20,value=7)
+de=st.sidebar.slider(' Oil top Dotted line',0,20,value=12)
 t=st.sidebar.slider(' Oil bottom Dotted line',0,15,value=5)
 #gde=st.sidebar.slider('Upper Dotted line',0,15,value=5)
 gas_gr=st.sidebar.slider('Gas gradient cut off',0.0,0.7,value=0.5)
