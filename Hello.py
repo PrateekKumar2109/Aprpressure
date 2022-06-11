@@ -2,11 +2,11 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Hello",
-    page_icon="👋",
+    page_icon="👋",base="dark"
+primaryColor="purple"
 )
 
-base="dark"
-primaryColor="purple"
+
 st.title(" Multi-Page Streamlit Web Application")
 st.write("# Welcome to O & G Made Easy! 👋")
 
