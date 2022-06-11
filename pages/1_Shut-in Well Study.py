@@ -29,7 +29,7 @@ data_uploader = st.file_uploader("upload file", type={"csv", "txt"})
 if data_uploader is not None:
     data_df = pd.read_csv(data_uploader)
     #data_df['TVDSS']=data_df["TVDKB"]-kb
-st.header("The Loaded Deviation Data ")
+st.header("The Input Deviation Data ")
 st.dataframe(data_df)
 st.header("Upload the Shut-in  data file here")
 st.markdown(" The file format is  columns Depth MDKB  in md-ft, pressure & temperature")
@@ -37,7 +37,7 @@ data_uploader2 = st.file_uploader("upload file 2", type={"csv", "txt"})
 if data_uploader2 is not None:
     data_df2 = pd.read_csv(data_uploader2)
     
-st.header("The Loaded Pressure Data Expro format")
+st.header("The Input Pressure & Temp. Survey  Data")
 st.dataframe(data_df2)
 df_convert=data_df2.copy()
 df_convert=df_convert[['DEPTH', 'PRESSURE', 'TEMPERATURE']]
