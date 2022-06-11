@@ -202,7 +202,7 @@ def pressure_plot_down(well_name,dataframe):
     plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
     plt.gca().invert_yaxis()
     plt.ylabel("Depth in TVDSS",color="black",fontsize=10)
-    label_o='Gradient is '+str(round(a,2))
+    label_o=' Oil Gradient is '+str(round(a,2))
     plt.xlabel("Pressure in psi",color="brown",fontsize=10)
     plt.tick_params(axis='both',labelsize=4)
     plt.title(well_name+' SBHP Pressure with Depth Plot ',fontsize=10)
@@ -220,7 +220,7 @@ def pressure_plot_down(well_name,dataframe):
                  xytext=(-100,0), # distance from text to points (x,y)
                  ha='left') # horizontal alignment can be left, right or center
     plt.annotate(label_o, # this is the text
-                 (xs-100,ys-300), # these are the coordinates to position the label
+                 (xs-300,ys-300), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
                  xytext=(-100,0), # distance from text to points (x,y)
                  ha='left')
