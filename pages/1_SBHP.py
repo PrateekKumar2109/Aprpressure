@@ -151,7 +151,7 @@ def pressure_temp_plot(well_name,dataframe):
 #
 
 def pressure_plot_down(well_name,dataframe):
-    fig=plt.figure(figsize=(4.2,5.2),dpi=45)
+    fig=plt.figure(figsize=(3.6,4.5),dpi=30)
     plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='brown',marker='o',lw=2.5,label='Pressure')
     plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
     plt.gca().invert_yaxis()
