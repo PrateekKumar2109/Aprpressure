@@ -126,7 +126,7 @@ def pressure_temp_plot(well_name,dataframe):
     ax.tick_params( axis='y',labelsize=13,direction='out', length=6, width=2, colors='black',
                grid_color='r', grid_alpha=0.5)
     ax.set_xticklabels(dataframe['PRESSURE'],fontsize=14)
-    ax.set_xticklabels(fontsize=14)
+    #ax.set_xticklabels(fontsize=14)
     ax.set_ylabel("Depth in TVDSS",color="black",fontsize=18)
     ax2=ax.twiny()
     ax2.plot(dataframe['TEMPERATURE'],dataframe['TVDSS'],color="blue",marker="o",lw=2.5,label='Temperature')
