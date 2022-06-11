@@ -3,8 +3,8 @@ import streamlit as st
 import pandas as pd 
 import numpy as np 
 import matplotlib.pyplot as plt
-from sklearn import datasets
-from sklearn.metrics import r2_score
+#from sklearn import datasets
+#from sklearn.metrics import r2_score
 import os
 st.title("""Reserveroir Data Conversion  Dashboard""")
 wellname=['R-12B-1']
