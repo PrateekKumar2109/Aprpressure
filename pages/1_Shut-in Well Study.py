@@ -218,7 +218,7 @@ def pressure_plot_down(well_name,dataframe):
                  (xs,ys), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
                  xytext=(-100,0), # distance from text to points (x,y)
-                 ha='left',fontsize=6.5) # horizontal alignment can be left, right or center
+                 ha='left',fontsize=7.5) # horizontal alignment can be left, right or center
     plt.annotate(label_o, # this is the text
                  (xs-450,ys-410), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
