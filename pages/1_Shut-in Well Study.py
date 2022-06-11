@@ -198,7 +198,7 @@ def pressure_plot_down(well_name,dataframe):
     #plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',c=df_final['Fluid type'].map(colors))
     groups = df_final.groupby('Fluid type')
     for name, group in groups:
-        plt.scatter(group.PRESSURE, group.TVDSS, label=name,color=colors[name],marker='o',s=20)
+        plt.scatter(group.PRESSURE, group.TVDSS, label=name,color=colors[name],marker='o',s=10)
     plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
     plt.gca().invert_yaxis()
     plt.ylabel("Depth in TVDSS",color="black",fontsize=6)
@@ -234,6 +234,6 @@ st.pyplot(fig2,width=20)
 
 st.text('Pressure Plot with gradients')
 fig1=pressure_plot_down(wellname[k],df_final)
-st.pyplot(fig1,width=40)
+st.pyplot(fig1,width=20)
 
 
