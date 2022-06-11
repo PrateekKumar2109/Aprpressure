@@ -204,7 +204,7 @@ def pressure_plot_down(well_name,dataframe):
     plt.ylabel("Depth in TVDSS",color="black",fontsize=9)
     label_o=' Oil Gradient is '+str(round(a,2))+' psi/m'
     plt.xlabel("Pressure in psi",color="black",fontsize=9)
-    plt.tick_params(axis='both',labelsize=4)
+    plt.tick_params(axis='both',labelsize=6)
     plt.title(well_name+'  Interactive Interpretation  ',fontsize=11)
     plt.grid(axis='both')
     #plt.rcParams['xtick.top']=plt.rcParams['xtick.labeltop']=True
@@ -218,12 +218,12 @@ def pressure_plot_down(well_name,dataframe):
                  (xs,ys), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
                  xytext=(-100,0), # distance from text to points (x,y)
-                 ha='left',fontsize=7.5) # horizontal alignment can be left, right or center
+                 ha='left',fontsize=8.5) # horizontal alignment can be left, right or center
     plt.annotate(label_o, # this is the text
                  (xs-450,ys-410), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
                  xytext=(-100,0), # distance from text to points (x,y)
-                 ha='left',fontsize=6.5)
+                 ha='left',fontsize=7.5)
     
     plt.legend(fontsize=7)
     return fig
