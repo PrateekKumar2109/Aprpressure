@@ -7,7 +7,7 @@ st.set_page_config(
 
 
 st.title(" Multi-Page Streamlit Web Application")
-st.write("# Welcome to O & G Made Easy! 👋")
+st.header("# Welcome to O & G Made Easy! 👋")
 
 st.sidebar.success("Select a demo above.")
 
