@@ -193,7 +193,7 @@ def pressure_temp_plot(well_name,dataframe):
 
 def pressure_plot_down(well_name,dataframe):
     colors = {'oil':'green', 'gas':'red', 'water':'blue'}
-    fig=plt.figure(figsize=(4.6,4.05),dpi=60)
+    fig=plt.figure(figsize=(4.6,4.1),dpi=60)
     plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='black',lw=1,label='Pressure')
     #plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',c=df_final['Fluid type'].map(colors))
     groups = df_final.groupby('Fluid type')
@@ -201,11 +201,11 @@ def pressure_plot_down(well_name,dataframe):
         plt.scatter(group.PRESSURE, group.TVDSS, label=name,color=colors[name],marker='o',s=18)
     plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
     plt.gca().invert_yaxis()
-    plt.ylabel("Depth in TVDSS",color="black",fontsize=8)
+    plt.ylabel("Depth in TVDSS",color="black",fontsize=9)
     label_o=' Oil Gradient is '+str(round(a,2))+' psi/m'
-    plt.xlabel("Pressure in psi",color="black",fontsize=8)
+    plt.xlabel("Pressure in psi",color="black",fontsize=9)
     plt.tick_params(axis='both',labelsize=4)
-    plt.title(well_name+'  Interactive Interpretation  ',fontsize=10)
+    plt.title(well_name+'  Interactive Interpretation  ',fontsize=11)
     plt.grid(axis='both')
     #plt.rcParams['xtick.top']=plt.rcParams['xtick.labeltop']=True
     plt.rcParams['xtick.bottom']=plt.rcParams['xtick.labelbottom']=True
