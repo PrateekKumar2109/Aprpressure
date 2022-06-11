@@ -198,21 +198,21 @@ def pressure_plot_down(well_name,dataframe):
     #plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',c=df_final['Fluid type'].map(colors))
     groups = df_final.groupby('Fluid type')
     for name, group in groups:
-        plt.scatter(group.PRESSURE, group.TVDSS, label=name,color=colors[name],marker='o',s=17)
+        plt.scatter(group.PRESSURE, group.TVDSS, label=name,color=colors[name],marker='o',s=18)
     plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
     plt.gca().invert_yaxis()
-    plt.ylabel("Depth in TVDSS",color="black",fontsize=6)
-    label_o=' Oil Gradient is '+str(round(a,2))
-    plt.xlabel("Pressure in psi",color="black",fontsize=6)
+    plt.ylabel("Depth in TVDSS",color="black",fontsize=7)
+    label_o=' Oil Gradient is '+str(round(a,2))+' psi/m'
+    plt.xlabel("Pressure in psi",color="black",fontsize=7)
     plt.tick_params(axis='both',labelsize=4)
-    plt.title(well_name+' Interpretation Plot ',fontsize=7)
+    plt.title(well_name+' Interpretation Plot ',fontsize=8)
     plt.grid(axis='both')
     #plt.rcParams['xtick.top']=plt.rcParams['xtick.labeltop']=True
     plt.rcParams['xtick.bottom']=plt.rcParams['xtick.labelbottom']=True
     #plt.text(1000,2000,(df_final['PRESSURE']+df_final['TVDSS'].values[0]))
     plt.plot(x_line, a*x_line+b,color='blue',linestyle='dotted')
 
-    label = ' Pressure  is '+str(round(xs,2))
+    label = ' Pressure  is '+str(round(xs,2))+' psi'
     
     plt.annotate(label, # this is the text
                  (xs,ys), # these are the coordinates to position the label
