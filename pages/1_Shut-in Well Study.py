@@ -14,7 +14,7 @@ kb=st.sidebar.slider('KB',30.5,45.5,value=36.72)
 
 kbth=st.sidebar.slider('KB_TH',8.5,25.5,value=17.32)
 de=st.sidebar.slider(' Lower Dotted line',5,35,value=20)
-gde=st.sidebar.slider('Upper Dotted line',0,15,value=5)
+#gde=st.sidebar.slider('Upper Dotted line',0,15,value=5)
 gas_gr=st.sidebar.slider('Gas gradient cut off',0.0,0.7,value=0.5)
 water_gr=st.sidebar.slider('Water gradient cut off',0.0,1.8,value=1.4)
 k=0
