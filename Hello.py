@@ -20,7 +20,7 @@ st.markdown(
 
 
 activities=['Login','About']
-choice=st.sidebar.selection("Select Activity", activities)
+choice=st.sidebar.selectbox("Select Activity", activities)
 if choice=='Login':
     st.subheader('Login')
     username=st.text_input("Enter Username")
