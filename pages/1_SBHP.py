@@ -15,6 +15,8 @@ kb=st.sidebar.slider('KB',30.5,45.5,value=36.72)
 kbth=st.sidebar.slider('KB_TH',8.5,25.5,value=17.32)
 de=st.sidebar.slider(' Lower Dotted line',5,35,value=20)
 gde=st.sidebar.slider('Upper Dotted line',0,15,value=5)
+gas_gr=st.sidebar.slider('Gas gradient cut off',0.0,0.7,value=0.5)
+water_gr=st.sidebar.slider('Water gradient cut off',0.0,1.8,value=1.4)
 k=0
 #kb=36.72
 #kbth=17.32
@@ -175,11 +177,12 @@ def pressure_plot_down(well_name,dataframe):
                  ha='left') # horizontal alignment can be left, right or center
     return fig
 
-
-st.text('Pressure Plot')
-fig1=pressure_plot_down(wellname[k],df_final)
-st.pyplot(fig1)
-
 st.text('Pressure & Temperature Plot')
 fig2=pressure_temp_plot(wellname[k],df_final)
 st.pyplot(fig2,width=20)
+
+st.text('Pressure Plot with gradients')
+fig1=pressure_plot_down(wellname[k],df_final)
+st.pyplot(fig1)
+
+
