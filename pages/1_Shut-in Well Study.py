@@ -193,7 +193,7 @@ def pressure_temp_plot(well_name,dataframe):
 
 def pressure_plot_down(well_name,dataframe):
     colors = {'oil':'green', 'gas':'red', 'water':'blue'}
-    fig=plt.figure(figsize=(1.8,1.8),dpi=70)
+    fig=plt.figure(figsize=(2,1.8),dpi=30)
     plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='black',lw=1,label='Pressure')
     #plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',c=df_final['Fluid type'].map(colors))
     groups = df_final.groupby('Fluid type')
@@ -201,31 +201,31 @@ def pressure_plot_down(well_name,dataframe):
         plt.scatter(group.PRESSURE, group.TVDSS, label=name,color=colors[name],marker='o',s=10)
     plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
     plt.gca().invert_yaxis()
-    plt.ylabel("Depth in TVDSS",color="black",fontsize=6)
+    plt.ylabel("Depth in TVDSS",color="black",fontsize=4)
     label_o=' Oil Gradient is '+str(round(a,2))
-    plt.xlabel("Pressure in psi",color="brown",fontsize=6)
+    plt.xlabel("Pressure in psi",color="brown",fontsize=4)
     plt.tick_params(axis='both',labelsize=3)
-    plt.title(well_name+' Interpretation Plot ',fontsize=8)
+    plt.title(well_name+' Interpretation Plot ',fontsize=6)
     plt.grid(axis='both')
     plt.rcParams['xtick.top']=plt.rcParams['xtick.labeltop']=True
     plt.rcParams['xtick.bottom']=plt.rcParams['xtick.labelbottom']=True
     #plt.text(1000,2000,(df_final['PRESSURE']+df_final['TVDSS'].values[0]))
     plt.plot(x_line, a*x_line+b,color='blue',linestyle='dotted')
 
-    label = xs,ys
+    label = ' Pressure  is '+str(round(xs,2))
     
     plt.annotate(label, # this is the text
                  (xs,ys), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
                  xytext=(-50,0), # distance from text to points (x,y)
-                 ha='left',fontsize=6) # horizontal alignment can be left, right or center
+                 ha='left',fontsize=4) # horizontal alignment can be left, right or center
     plt.annotate(label_o, # this is the text
-                 (xs-200,ys-400), # these are the coordinates to position the label
+                 (xs-100,ys-400), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
                  xytext=(-100,0), # distance from text to points (x,y)
-                 ha='left',fontsize=6)
+                 ha='left',fontsize=4)
     
-    plt.legend(fontsize=4)
+    plt.legend(fontsize=3)
     return fig
 
 st.text('Pressure & Temperature Plot')
