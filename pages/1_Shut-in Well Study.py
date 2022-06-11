@@ -193,7 +193,7 @@ def pressure_temp_plot(well_name,dataframe):
 
 def pressure_plot_down(well_name,dataframe):
     colors = {'oil':'green', 'gas':'red', 'water':'blue'}
-    fig=plt.figure(figsize=(2,1.8),dpi=30)
+    fig=plt.figure(figsize=(2,1.85),dpi=70)
     plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='black',lw=1,label='Pressure')
     #plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',c=df_final['Fluid type'].map(colors))
     groups = df_final.groupby('Fluid type')
@@ -207,7 +207,7 @@ def pressure_plot_down(well_name,dataframe):
     plt.tick_params(axis='both',labelsize=3)
     plt.title(well_name+' Interpretation Plot ',fontsize=6)
     plt.grid(axis='both')
-    plt.rcParams['xtick.top']=plt.rcParams['xtick.labeltop']=True
+    #plt.rcParams['xtick.top']=plt.rcParams['xtick.labeltop']=True
     plt.rcParams['xtick.bottom']=plt.rcParams['xtick.labelbottom']=True
     #plt.text(1000,2000,(df_final['PRESSURE']+df_final['TVDSS'].values[0]))
     plt.plot(x_line, a*x_line+b,color='blue',linestyle='dotted')
@@ -234,6 +234,6 @@ st.pyplot(fig2,width=20)
 
 st.text('Pressure Plot with gradients')
 fig1=pressure_plot_down(wellname[k],df_final)
-st.pyplot(fig1,width=20)
+st.pyplot(fig1,width=30)
 
 
