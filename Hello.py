@@ -33,7 +33,7 @@ if choice=='Login':
             st.warning('Wrong Password')
     else:
  else:   
-   st.write(
+    st.write(
         """With the Release Streamlit Version 1.10.0 it is now possible to make a Multi-Page application 
      eliminating need of third party plugins. In this Web application we are working on Pressure & Temperature Survey Data
      which is used to make decision in day to day life of a well. We 
