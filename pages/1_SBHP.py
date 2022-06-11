@@ -16,8 +16,8 @@ kbth=st.sidebar.slider('KB_TH',8.5,25.5,value=17.32)
 de=st.sidebar.slider(' Lower Dotted line',5,35,value=20)
 gde=st.sidebar.slider('Upper Dotted line',0,15,value=5)
 k=0
-kb=36.72
-kbth=17.32
+#kb=36.72
+#kbth=17.32
 data_uploader = st.file_uploader("upload file", type={"csv", "txt"})
 if data_uploader is not None:
     data_df = pd.read_csv(data_uploader)
