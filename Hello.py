@@ -31,8 +31,8 @@ if choice=='Login':
             st.write("Hello {}".format(username))
         else:
             st.warning('Wrong Password')
-    else:
- else:   
+    
+elif choice=='About':   
     st.write(
         """With the Release Streamlit Version 1.10.0 it is now possible to make a Multi-Page application 
      eliminating need of third party plugins. In this Web application we are working on Pressure & Temperature Survey Data
