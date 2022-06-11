@@ -5,10 +5,9 @@ st.set_page_config(
     page_icon="👋",
 )
 
+base="dark"
+primaryColor="purple"
 st.title(" Multi-Page Streamlit Web Application")
-
-
-
 st.write("# Welcome to O & G Made Easy! 👋")
 
 st.sidebar.success("Select a demo above.")
@@ -22,6 +21,6 @@ st.markdown(
 
 expander = st.expander("Domain Knowledge of Oil & Gas ")
 expander.write("""
-     Pressure & Temperature Surveys hole are carried out in the well frequently. Shut-in & flowing 
+     Pressure & Temperature hole Surveys are carried out in the well frequently. Shut-in & flowing 
      pressure & temp. surveys are recorded to analyze the pressures, well flowing behaviour.
  """)
