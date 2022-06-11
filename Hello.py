@@ -1,24 +1,15 @@
 import streamlit as st
-
 st.set_page_config(
     page_title="Hello",
     page_icon="👋"
 )
-
-
 st.title(" Multi-Page Streamlit Web Application")
 st.header(" Welcome to O & G Made Easy! 👋")
-
 st.sidebar.success("Select a demo above.")
-
 st.markdown(
     """
-    We are here to make Oil and Gas Engineer life easy 
-    
-"""
-)
-
-
+    We are here to make Oil and Gas Engineer life easy   
+""")
 activities=['Login','About']
 choice=st.sidebar.selectbox("Select Activity", activities)
 if choice=='Login':
