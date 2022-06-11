@@ -99,77 +99,83 @@ m=[0,0,0,0]
 headings=['CV','MMG','MMG2','MMG3']
 x_c=[800,800,800,800]
 
-#fig=plt.figure(figsize=(4.2,5.2),dpi=45)
-#fig=plt.figure(figsize=(50,80),dpi=100)
-#ax = fig.add_subplot(211)
+def pressure_temp_plot(well_name,dataframe):
+    fig=plt.figure(figsize=(4.2,5.2),dpi=45)
+    fig=plt.figure(figsize=(50,80),dpi=100)
+    ax = fig.add_subplot(211)
 
-#ax.set_title(wellname[k]+' SBHP Pressure with Depth Plot ',fontsize=20)
-#ax.plot(df_final['PRESSURE'],df_final['TVDSS'],color='brown',marker="o",lw=2.5,label='Pressure')
-#ax.plot(x_v_line,m[0]*x_v_line+c[0],color='black',lw=1.5)
-#ax.plot(x_v_line,m[1]*x_v_line+c[1],color='black',lw=1.5)
-#ax.plot(x_v_line,m[2]*x_v_line+c[2],color='black',lw=1.5)
-#ax.plot(x_v_line,m[3]*x_v_line+c[3],color='black',lw=1.5)
-#ax.text(x_c[0],c[0],s=headings[0],fontsize='large')
-#ax.text(x_c[1],c[1],s=headings[1],fontsize='large')
-#ax.text(x_c[2],c[2],s=headings[2],fontsize='large')
-#ax.text(x_c[3],c[3],s=headings[3],fontsize='large')
-#ax.plot()
-#ax.plot(data_plot['Date'],data_plot['Qo, bopd'],color='green',marker='o',lw=2.5,label='Oil Rate')
-#ax.set_xlim([200,(df_final['PRESSURE'].values[0]+200)])
-#ax.set_ylim([(df_final['TVDSS'].values[0]+100),-100])
-#ax.set_ylim([-100,(df_final['TVDSS'].values[0]+100)])
-#plt.gca().invert_yaxis()
-#ax.invert_yaxis()
-#ax.legend(loc=1,fontsize='x-large')
+    ax.set_title(well_name+' SBHP Pressure with Depth Plot ',fontsize=20)
+    ax.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='brown',marker="o",lw=2.5,label='Pressure')
+    #ax.plot(x_v_line,m[0]*x_v_line+c[0],color='black',lw=1.5)
+    #ax.plot(x_v_line,m[1]*x_v_line+c[1],color='black',lw=1.5)
+    #ax.plot(x_v_line,m[2]*x_v_line+c[2],color='black',lw=1.5)
+    #ax.plot(x_v_line,m[3]*x_v_line+c[3],color='black',lw=1.5)
+    #ax.text(x_c[0],c[0],s=headings[0],fontsize='large')
+    #ax.text(x_c[1],c[1],s=headings[1],fontsize='large')
+    #ax.text(x_c[2],c[2],s=headings[2],fontsize='large')
+    #ax.text(x_c[3],c[3],s=headings[3],fontsize='large')
+    ax.plot()
+    
+    ax.set_xlim([200,(dataframe['PRESSURE'].values[0]+200)])
+    ax.set_ylim([(dataframe['TVDSS'].values[0]+100),-100])
+    ax.set_ylim([-100,(dataframe['TVDSS'].values[0]+100)])
+    plt.gca().invert_yaxis()
+    ax.invert_yaxis()
+    ax.legend(loc=1,fontsize='x-large')
+    ax.set_xlabel("Pressure in psi",color="brown",fontsize=22,labelpad=10)
+    ax.tick_params( axis='y',labelsize=13,direction='out', length=6, width=2, colors='black',
+               grid_color='r', grid_alpha=0.5)
+    ax.set_xticklabels(dataframe['PRESSURE'],fontsize=14)
+    ax.set_xticklabels(fontsize=14)
+    ax.set_ylabel("Depth in TVDSS",color="black",fontsize=18)
+    ax2=ax.twiny()
+    ax2.plot(dataframe['TEMPERATURE'],dataframe['TVDSS'],color="blue",marker="o",lw=2.5,label='Temperature')
+    ax2.set_xlim([50,(dataframe['TEMPERATURE'].values[0]+50)])
+    ax2.set_ylim([(dataframe['TVDSS'].values[0]+100),-100])
+    ax2.set_ylim([-100,(dataframe['TVDSS'].values[0]+100)])
+    plt.gca().invert_yaxis()
+    ax2.invert_yaxis()
+    ax.tick_params(axis='x',which='minor',direction='out',bottom=True,length=5)
+    ax2.legend(loc='upper right', fontsize='x-large',bbox_to_anchor=(0.99, 0.94))
+    ax2.tick_params( axis='y',labelsize=14,direction='out', length=6, width=2, colors='black',
+              grid_color='r', grid_alpha=0.5)
+    ax2.set_xlabel("Temperature ",color="blue",fontsize=18)
+    ax2.set_xticklabels(dataframe['TEMPERATURE'],fontsize=14)
+    ax2.set_xticklabels(fontsize=14)
+    ax.xaxis.grid(color='black', linestyle='--', linewidth=0.5)
+    ax.yaxis.grid(color='black', linestyle='--', linewidth=0.5)
+    plt.gca().invert_yaxis()
+    plt.show()
+    return fig
 
+#
 
-#ax.set_xlim(['Aug-18', 'Apr-21'])
-#ax.set_xlabel("Pressure in psi",color="brown",fontsize=22,labelpad=10)
-#ax.tick_params( axis='y',labelsize=13,direction='out', length=6, width=2, colors='black',
- #              grid_color='r', grid_alpha=0.5)
-#ax.set_xticklabels(df_final['PRESSURE'],fontsize=14)
-#ax.set_xticklabels(fontsize=14)
-#ax.set_ylabel("Depth in TVDSS",color="black",fontsize=18)
-#ax2=ax.twiny()
-#ax2.plot(df_final['TEMPERATURE'],df_final['TVDSS'],color="blue",marker="o",lw=2.5,label='Temperature')
-#ax2.set_xlim([50,(df_final['TEMPERATURE'].values[0]+50)])
-#ax2.set_ylim([(df_final['TVDSS'].values[0]+100),-100])
-#ax2.set_ylim([-100,(df_final['TVDSS'].values[0]+100)])
-#plt.gca().invert_yaxis()
-#ax2.invert_yaxis()
-#ax.tick_params(axis='x',which='minor',direction='out',bottom=True,length=5)
-#ax2.legend(loc='upper right', fontsize='x-large',bbox_to_anchor=(0.99, 0.94))
-#ax2.tick_params( axis='y',labelsize=14,direction='out', length=6, width=2, colors='black',
- #              grid_color='r', grid_alpha=0.5)
-#ax2.set_xlabel("Temperature ",color="blue",fontsize=18)
-#ax2.set_xticklabels(df_final['TEMPERATURE'],fontsize=14)
-#ax2.set_xticklabels(fontsize=14)
-#ax.xaxis.grid(color='black', linestyle='--', linewidth=0.5)
-#ax.yaxis.grid(color='black', linestyle='--', linewidth=0.5)
-#plt.gca().invert_yaxis()
-#plt.show()
+def pressure_plot_down(well_name,dataframe):
+    fig=plt.figure(figsize=(4.2,5.2),dpi=45)
+    plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='brown',marker='o',lw=2.5,label='Pressure')
+    plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
+    plt.gca().invert_yaxis()
+    plt.ylabel("Depth in TVDSS",color="black",fontsize=10)
 
-fig=plt.figure(figsize=(4.2,5.2),dpi=45)
-plt.plot(df_final['PRESSURE'],df_final['TVDSS'],color='brown',marker='o',lw=2.5,label='Pressure')
-plt.ylim(-100,(df_final['TVDSS'].values[0]+100))
-plt.gca().invert_yaxis()
-plt.ylabel("Depth in TVDSS",color="black",fontsize=10)
+    plt.xlabel("Pressure in psi",color="brown",fontsize=10)
+    plt.tick_params(axis='both',labelsize=4)
+    plt.title(well_name+' SBHP Pressure with Depth Plot ',fontsize=10)
+    plt.grid(axis='both')
+    plt.rcParams['xtick.top']=plt.rcParams['xtick.labeltop']=True
+    plt.rcParams['xtick.bottom']=plt.rcParams['xtick.labelbottom']=True
+    #plt.text(1000,2000,(df_final['PRESSURE']+df_final['TVDSS'].values[0]))
+    plt.plot(x_line, a*x_line+b,color='blue',linestyle='dotted')
 
-plt.xlabel("Pressure in psi",color="brown",fontsize=10)
-plt.tick_params(axis='both',labelsize=4)
-plt.title(wellname[k]+' SBHP Pressure with Depth Plot ',fontsize=10)
-plt.grid(axis='both')
-plt.rcParams['xtick.top']=plt.rcParams['xtick.labeltop']=True
-plt.rcParams['xtick.bottom']=plt.rcParams['xtick.labelbottom']=True
-#plt.text(1000,2000,(df_final['PRESSURE']+df_final['TVDSS'].values[0]))
-plt.plot(x_line, a*x_line+b,color='blue',linestyle='dotted')
-
-label = xs,ys
-st.text('Converted Reservoir Pressure Plot')
-plt.annotate(label, # this is the text
+    label = xs,ys
+    
+    plt.annotate(label, # this is the text
                  (xs,ys), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
                  xytext=(-100,0), # distance from text to points (x,y)
                  ha='left') # horizontal alignment can be left, right or center
+    return fig
 
-st.pyplot(fig)
+
+st.text('Pressure & Temperature Plot')
+fig1=pressure_plot_down(wellname[k],df_final)
+st.pyplot(fig1)
