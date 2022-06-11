@@ -96,10 +96,25 @@ def gradient_function(press,tvd_depth): #this function makes a list of gradients
 gradient=[]
 pressure_grad=gradient_function(df_final['PRESSURE'].values, df_final['TVDSS'].values)
 df_final['Pressure Gradient']=pressure_grad
+def fluid_type(gas_gra,water_gra,dataframe_df):
+    grad_arr=dataframe_df['Pressure Gradient'].values
+    depth_arr=dataframe_df['TVDSS'].values
+    for j in range(len(dataframe_df['PRESSURE'].values)):
+               
+           if grad_arr[j]>water_gra:
+                type.append('water')
+                
+           elif grad_arr[j]<gas_gra :
+                
+                type.append('gas')
+           else:
+                type.append('oil')   
+    type_file=np.array(type)
+    return type_file
 
 type=[]
 df_final_d=df_final.copy()
-df_final['Fluid type']=fluid_type(a_g,a,df_final,p[1]) # here we type the points on the basis of their gradient value
+df_final['Fluid type']=fluid_type(gas_gr,water_gr,df_final) # here we type the points on the basis of their gradient value
 x_np=df_final['PRESSURE'].values[t:de]#selecting for below gradient
 x_np=np.asfarray(x_np)
 x_np
