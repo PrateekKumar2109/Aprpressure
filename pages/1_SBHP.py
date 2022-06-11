@@ -141,7 +141,7 @@ def pressure_temp_plot(well_name,dataframe):
               grid_color='r', grid_alpha=0.5)
     ax2.set_xlabel("Temperature ",color="blue",fontsize=18)
     ax2.set_xticklabels(dataframe['TEMPERATURE'],fontsize=14)
-    ax2.set_xticklabels(fontsize=14)
+    #ax2.set_xticklabels(fontsize=14)
     ax.xaxis.grid(color='black', linestyle='--', linewidth=0.5)
     ax.yaxis.grid(color='black', linestyle='--', linewidth=0.5)
     plt.gca().invert_yaxis()
