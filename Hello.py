@@ -5,6 +5,7 @@ st.set_page_config(
     page_icon="👋",
 )
 
+st.title("# Multi-Page Streamlit Web Application")
 st.write("# Welcome to Pressure Made Esay! 👋")
 
 st.sidebar.success("Select a demo above.")
