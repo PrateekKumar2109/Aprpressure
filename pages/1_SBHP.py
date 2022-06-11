@@ -16,18 +16,18 @@ kbth=st.sidebar.slider('KB_TH',8.5,25.5,value=17.32)
 de=st.sidebar.slider(' Lower Dotted line',5,35,value=20)
 gde=st.sidebar.slider('Upper Dotted line',0,15,value=5)
 k=0
-#kb=36.72
-#kbth=17.32
-#data_uploader = st.file_uploader("upload file", type={"csv", "txt"})
-#if data_uploader is not None:
-#    data_df = pd.read_csv(data_uploader)
+kb=36.72
+kbth=17.32
+data_uploader = st.file_uploader("upload file", type={"csv", "txt"})
+if data_uploader is not None:
+    data_df = pd.read_csv(data_uploader)
     #data_df['TVDSS']=data_df["TVDKB"]-kb
 st.header("The Loaded Deviation Data ")
 st.dataframe(data_df)
 
-#data_uploader2 = st.file_uploader("upload file 2", type={"csv", "txt"})
-#if data_uploader2 is not None:
-#    data_df2 = pd.read_csv(data_uploader2)
+data_uploader2 = st.file_uploader("upload file 2", type={"csv", "txt"})
+if data_uploader2 is not None:
+    data_df2 = pd.read_csv(data_uploader2)
     
 st.header("The Loaded Pressure Data Expro format")
 st.dataframe(data_df2)
