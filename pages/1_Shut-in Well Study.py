@@ -225,7 +225,7 @@ def pressure_plot_down(well_name,dataframe):
                  xytext=(-100,0), # distance from text to points (x,y)
                  ha='left',fontsize=6)
     
-    plt.legend()
+    plt.legend(fontsize=6)
     return fig
 
 st.text('Pressure & Temperature Plot')
