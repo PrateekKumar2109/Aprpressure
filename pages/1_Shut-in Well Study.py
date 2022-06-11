@@ -23,13 +23,16 @@ k=0
 
 #kb=36.72
 #kbth=17.32
+st.header("Upload the Deviation data file here ")
+st.markdown(" The file format is  MDKB in m,TVDSSin m, Azimuth & Inclination")
 data_uploader = st.file_uploader("upload file", type={"csv", "txt"})
 if data_uploader is not None:
     data_df = pd.read_csv(data_uploader)
     #data_df['TVDSS']=data_df["TVDKB"]-kb
 st.header("The Loaded Deviation Data ")
 st.dataframe(data_df)
-
+st.header("Upload the Shut-in  data file here")
+st.markdown(" The file format is  columns Depth MDKB  in md-ft, pressure & temperature")
 data_uploader2 = st.file_uploader("upload file 2", type={"csv", "txt"})
 if data_uploader2 is not None:
     data_df2 = pd.read_csv(data_uploader2)
