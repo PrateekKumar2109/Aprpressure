@@ -193,7 +193,7 @@ def pressure_temp_plot(well_name,dataframe):
 
 def pressure_plot_down(well_name,dataframe):
     colors = {'oil':'green', 'gas':'red', 'water':'blue'}
-    fig=plt.figure(figsize=(4.5,4.0),dpi=60)
+    fig=plt.figure(figsize=(4.6,4.05),dpi=60)
     plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='black',lw=1,label='Pressure')
     #plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',c=df_final['Fluid type'].map(colors))
     groups = df_final.groupby('Fluid type')
@@ -205,7 +205,7 @@ def pressure_plot_down(well_name,dataframe):
     label_o=' Oil Gradient is '+str(round(a,2))+' psi/m'
     plt.xlabel("Pressure in psi",color="black",fontsize=8)
     plt.tick_params(axis='both',labelsize=4)
-    plt.title(well_name+' Interpretation Plot ',fontsize=9)
+    plt.title(well_name+' Interpretation Plot ',fontsize=10)
     plt.grid(axis='both')
     #plt.rcParams['xtick.top']=plt.rcParams['xtick.labeltop']=True
     plt.rcParams['xtick.bottom']=plt.rcParams['xtick.labelbottom']=True
@@ -220,12 +220,12 @@ def pressure_plot_down(well_name,dataframe):
                  xytext=(-100,0), # distance from text to points (x,y)
                  ha='left',fontsize=6.5) # horizontal alignment can be left, right or center
     plt.annotate(label_o, # this is the text
-                 (xs-400,ys-400), # these are the coordinates to position the label
+                 (xs-450,ys-410), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
                  xytext=(-100,0), # distance from text to points (x,y)
                  ha='left',fontsize=6.5)
     
-    plt.legend(fontsize=6)
+    plt.legend(fontsize=7)
     return fig
 
 st.text('Pressure & Temperature Plot')
