@@ -13,11 +13,14 @@ st.sidebar.header("User input parameter")
 kb=st.sidebar.slider('KB',30.5,45.5,value=36.72)
 
 kbth=st.sidebar.slider('KB_TH',8.5,25.5,value=17.32)
-de=st.sidebar.slider(' Lower Dotted line',5,35,value=20)
+de=st.sidebar.slider(' Oil top Dotted line',5,35,value=20)
+t=st.sidebar.slider(' Oil bottom Dotted line',0,15,value=0)
 #gde=st.sidebar.slider('Upper Dotted line',0,15,value=5)
 gas_gr=st.sidebar.slider('Gas gradient cut off',0.0,0.7,value=0.5)
 water_gr=st.sidebar.slider('Water gradient cut off',0.0,1.8,value=1.4)
+
 k=0
+
 #kb=36.72
 #kbth=17.32
 data_uploader = st.file_uploader("upload file", type={"csv", "txt"})
@@ -72,10 +75,31 @@ else:
 
 
 #df_final['TVDSS']=tvd#adding TVD column in dataframe#
-t=0
+
 #df_final.reset_index(inplace=True)
 #df_final.reset_index(inplace=True)
 df_final=df_final[['DEPTH','MDKB','TVDSS', 'PRESSURE', 'TEMPERATURE']]
+
+def slope(x1, y1, x2, y2):#calculates slope on point basis
+  s = (y2-y1)/(x2-x1)
+  return 1/s
+
+def gradient_function(press,tvd_depth): #this function makes a list of gradients of each point
+    for i in range(len(press)-1):
+        grad=slope(press[i],tvd_depth[i],press[i+1],tvd_depth[i+1])
+        gradient.append(grad)
+    gradient.append(0) # we add zero to match the length for dataframe
+    #gradient.append(0) 
+    press_grad=gradient.copy()
+    return press_grad
+
+gradient=[]
+pressure_grad=gradient_function(df_final['PRESSURE'].values, df_final['TVDSS'].values)
+df_final['Pressure Gradient']=pressure_grad
+
+type=[]
+df_final_d=df_final.copy()
+df_final['Fluid type']=fluid_type(a_g,a,df_final,p[1]) # here we type the points on the basis of their gradient value
 x_np=df_final['PRESSURE'].values[t:de]#selecting for below gradient
 x_np=np.asfarray(x_np)
 x_np
@@ -153,8 +177,10 @@ def pressure_temp_plot(well_name,dataframe):
 #
 
 def pressure_plot_down(well_name,dataframe):
+    colors = {'oil':'green', 'gas':'red', 'water':'blue'}
     fig=plt.figure(figsize=(3.6,4.5),dpi=30)
-    plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='brown',marker='o',lw=2.5,label='Pressure')
+    plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='brown',lw=2.5,label='Pressure')
+    plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',label='Pressure',c=df_final['Fluid type'].map(colors))
     plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
     plt.gca().invert_yaxis()
     plt.ylabel("Depth in TVDSS",color="black",fontsize=10)
