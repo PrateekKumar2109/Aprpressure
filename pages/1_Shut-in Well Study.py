@@ -193,7 +193,7 @@ def pressure_temp_plot(well_name,dataframe):
 
 def pressure_plot_down(well_name,dataframe):
     colors = {'oil':'green', 'gas':'red', 'water':'blue'}
-    fig=plt.figure(figsize=(2.2,3),dpi=30)
+    fig=plt.figure(figsize=(2.,2.8),dpi=45)
     plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='black',lw=1,label='Pressure')
     #plt.scatter(df_final['PRESSURE'],df_final['TVDSS'],marker='o',c=df_final['Fluid type'].map(colors))
     groups = df_final.groupby('Fluid type')
@@ -217,10 +217,10 @@ def pressure_plot_down(well_name,dataframe):
     plt.annotate(label, # this is the text
                  (xs,ys), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
-                 xytext=(-100,0), # distance from text to points (x,y)
+                 xytext=(-50,0), # distance from text to points (x,y)
                  ha='left',fontsize=6) # horizontal alignment can be left, right or center
     plt.annotate(label_o, # this is the text
-                 (xs-400,ys-400), # these are the coordinates to position the label
+                 (xs-200,ys-400), # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
                  xytext=(-100,0), # distance from text to points (x,y)
                  ha='left',fontsize=6)
