@@ -18,6 +18,20 @@ st.markdown(
 """
 )
 
+
+activities=['Login','About']
+choice=st.sidebar.selection("Select Activity", activities)
+if choice=='Login':
+    st.subheader('Login')
+    username=st.text_input("Enter Username")
+    password=st.text_input("Enter Password", type='password')
+    if st.button("Submit"):
+        if password=='12345':
+            st.balloons()
+            st.write("Hello {}".format(username))
+        else:
+            st.warning('Wrong Password')
+            
 expander = st.expander("Domain Knowledge of Oil & Gas ")
 expander.write("""
      Pressure & Temperature hole Surveys are carried out in the well frequently. Shut-in & flowing 
