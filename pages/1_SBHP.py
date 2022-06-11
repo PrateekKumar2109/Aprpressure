@@ -176,6 +176,10 @@ def pressure_plot_down(well_name,dataframe):
     return fig
 
 
-st.text('Pressure & Temperature Plot')
+st.text('Pressure Plot')
 fig1=pressure_plot_down(wellname[k],df_final)
 st.pyplot(fig1)
+
+st.text('Pressure & Temperature Plot')
+fig2=pressure_temp_plot(wellname[k],df_final)
+st.pyplot(fig2)
