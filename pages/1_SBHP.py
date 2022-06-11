@@ -100,8 +100,8 @@ headings=['CV','MMG','MMG2','MMG3']
 x_c=[800,800,800,800]
 
 def pressure_temp_plot(well_name,dataframe):
-    fig=plt.figure(figsize=(4.2,5.2),dpi=45)
-    fig=plt.figure(figsize=(50,80),dpi=100)
+    #fig=plt.figure(figsize=(4.2,5.2),dpi=45)
+    fig=plt.figure(figsize=(10,20),dpi=40)
     ax = fig.add_subplot(211)
 
     ax.set_title(well_name+' SBHP Pressure with Depth Plot ',fontsize=20)
@@ -182,4 +182,4 @@ st.pyplot(fig1)
 
 st.text('Pressure & Temperature Plot')
 fig2=pressure_temp_plot(wellname[k],df_final)
-st.pyplot(fig2)
+st.pyplot(fig2,width=20)
