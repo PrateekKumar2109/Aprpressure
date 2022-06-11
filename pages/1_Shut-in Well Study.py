@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 #from sklearn import datasets
 #from sklearn.metrics import r2_score
 import os
-st.title("""Reserveroir Data Conversion  Dashboard""")
-wellname=['R-12B-1']
+st.title("""Static Well Study Interpretation Web Application""")
+wellname=['Well_1']
 st.sidebar.header("User input parameter")
 
-kb=st.sidebar.slider('KB',30.5,45.5,value=36.72)
+kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
 
-kbth=st.sidebar.slider('KB_TH',8.5,25.5,value=17.32)
+kbth=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.32)
 de=st.sidebar.slider(' Oil top Dotted line',5,35,value=20)
 t=st.sidebar.slider(' Oil bottom Dotted line',0,15,value=0)
 #gde=st.sidebar.slider('Upper Dotted line',0,15,value=5)
@@ -224,6 +224,6 @@ st.pyplot(fig2,width=20)
 
 st.text('Pressure Plot with gradients')
 fig1=pressure_plot_down(wellname[k],df_final)
-st.pyplot(fig1)
+st.pyplot(fig1,width=20)
 
 
