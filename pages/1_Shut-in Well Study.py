@@ -234,6 +234,6 @@ st.pyplot(fig2,width=20)
 
 st.text('Pressure Plot with gradients')
 fig1=pressure_plot_down(wellname[k],df_final)
-st.pyplot(fig1,width=20)
+st.pyplot(fig1,width=40)
 
 
