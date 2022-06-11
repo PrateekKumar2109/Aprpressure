@@ -148,7 +148,7 @@ def pressure_temp_plot(well_name,dataframe):
     fig=plt.figure(figsize=(10,20),dpi=40)
     ax = fig.add_subplot(211)
 
-    ax.set_title(well_name+' SBHP Pressure with Depth Plot ',fontsize=20)
+    ax.set_title(well_name+' Shut-in Hole survey data Plot ',fontsize=20)
     ax.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='brown',marker="o",lw=2.5,label='Pressure')
     #ax.plot(x_v_line,m[0]*x_v_line+c[0],color='black',lw=1.5)
     #ax.plot(x_v_line,m[1]*x_v_line+c[1],color='black',lw=1.5)
