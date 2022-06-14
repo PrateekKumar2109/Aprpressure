@@ -69,7 +69,7 @@ def pressure_plot_down(well_name,dataframe):
     groups = df_final.groupby('Fluid type')
     for name, group in groups:
         plt.scatter(group.PRESSURE, group.TVDSS, label=name,color=colors[name],marker='o',s=18)
-    plt.ylim(-100,(dataframe['TVDSS'].values[0]+100))
+    plt.ylim((dataframe['TVDSS'].values[-1]-100),(dataframe['TVDSS'].values[0]+100))
     plt.gca().invert_yaxis()
     plt.ylabel("Depth in TVDSS",color="black",fontsize=9)
     #label_o=' Oil Gradient is '+str(round(a,2))+' psi/m'
