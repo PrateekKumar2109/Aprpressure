@@ -79,14 +79,14 @@ def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
 def depth_finder(data_df1,inc_ang):
     x=data_df1['Inc']
     a=inc_ang
-    names=['Azimuth', 'TVDSS']
+    names=['TVDSS']
     data=[]
     for j in range(len(names)):
         y=df[names[j]]
         i=x[x>a].index[0]-1
         d=y[i]+((y[i+1]-y[i])*(a-x[i])/(x[i+1]-x[i]))
         data.append(d)
-    
+   return data 
 def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choice1,num_fgs):
     df_final=df_final_list[0]
     y_v_line=np.arange(200, (df_final['PRESSURE'].values[0]+100), 100)
@@ -175,6 +175,7 @@ for j in range(num_figure):
 st.text('Pressure & Temperature Plot')
 wellnam='HSD-5'
 y_c=[300,300,300,300]
+point=depth_finder(data_df,ang_lim)
 fig2=flwing_press_temp_plt(wellnam,dataframe_list,y_c,point,gas_gradient,gas_inj_p,choice,num_figure)
 
 st.pyplot(fig2,width=20)                             
