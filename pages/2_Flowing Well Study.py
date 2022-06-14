@@ -11,9 +11,12 @@ wellname=['Well_1']
 st.sidebar.header("User input parameter")
 
 kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
-
+gas_gradient=st.sidebar.slider('Injection Gas Grad',0.0,0.4,value=0.1)
+gas_inj_p=st.sidebar.slider('Gas Injection Pressure',200,1200,value=400)
+num_fgs=st.sidebar.slider('Number of Grad',1,7,value=2)
+num_fgs=num_fgs-1
 kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
-
+ang_lim=st.sidebar.slider('Maximum angle for tool',40,90,value=65)
 st.header("Upload the Deviation data file here ")
 st.markdown(" The file format is  MDKB in m,TVDSSin m, Azimuth & Inclination")
 data_uploader = st.file_uploader("upload file", type={"csv", "txt"})
@@ -69,10 +72,7 @@ def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
        tvd.append(0)
        data_new['TVDSS']=tvd
     return data_new
-df_final=dataframe_tvd_converter(data_df,dataframe_list[0],kb_th)
- 
-st.header("The Input Pressure & Temp. Survey  Data")
-st.dataframe(df_final)                             
+                            
 def depth_finder(data_df1,inc_ang):
     x=data_df1['Inc']
     a=inc_ang
@@ -83,9 +83,11 @@ def depth_finder(data_df1,inc_ang):
         i=x[x>a].index[0]-1
         d=y[i]+((y[i+1]-y[i])*(a-x[i])/(x[i+1]-x[i]))
         data.append(d)
-point=depth_finder(df_final,ang_lim)     
-def flwing_press_temp_plt(wellnam,df_final,y_c,ang_point):
+    
+def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip):
+    df_final=df_final_list[0]
     y_v_line=np.arange(200, (df_final['PRESSURE'].values[0]+100), 100)
+    x_v_line=np.arange(200, (df_final['TVDSS'].values[0]+100), 100)
     c=df_final['GL DEPTH TVDSS'].values
     m=[0,0,0,0]
     headings=df_final['VALVES'].values
@@ -94,7 +96,7 @@ def flwing_press_temp_plt(wellnam,df_final,y_c,ang_point):
     ax = fig.add_subplot(211)
 
     ax.set_title(wellnam+' FBHP Pressure with Depth Plot ',fontsize=20)
-    ax.plot(df_final['TVDSS'],df_final['PRESSURE'],color='brown',marker="o",lw=2.5,label='Pressure')
+    ax.plot(x_v_line,gas_grad*x_v_line+gip,color='black',lw=1.5)
     ax.plot(ang_point,0,color='red')
     ax.plot(m[0]*y_v_line+c[0],y_v_line,color='black',lw=1.5)
     ax.plot(m[1]*y_v_line+c[1],y_v_line,color='black',lw=1.5)
@@ -122,7 +124,16 @@ def flwing_press_temp_plt(wellnam,df_final,y_c,ang_point):
 #ax.set_xticklabels(fontsize=14)
     ax.set_xlabel("Depth in TVDSS",color="black",fontsize=18)
     ax2=ax.twinx()
-    ax2.plot(df_final['TVDSS'],df_final['TEMPERATURE'],color="blue",marker="o",lw=2.5,label='Temperature')
+    label_wekk_p=[]
+    label_wekk_t=[] 
+    for p in range(len(flw_st_name)):
+        label_wekk_p.append(flw_st_name[p]+' Pressure')
+        label_wekk_t.append(flw_st_name[p]+' Temperature')
+    for k in range(len(flw_st_name)):
+        ax.plot(df_final_list[k]['TVDSS'],df_final_list[k]['PRESSURE'],marker="o",lw=2.5,label=label_wekk_p[k])
+    for l in range(len(flw_st_name)):
+        ax.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
+    ax2.plot(df_final['TVDSS'],df_final[],color="blue",marker="o",lw=2.5,label='Temperature')
     ax2.set_ylim([50,(df_final['TEMPERATURE'].values[0]+50)])
     ax2.set_xlim([0,(df_final['TVDSS'].values[0]+100)])
 #ax2.set_ylim([-100,(df_final['TVDSS'].values[0]+100)])
@@ -140,10 +151,16 @@ def flwing_press_temp_plt(wellnam,df_final,y_c,ang_point):
 #plt.gca().invert_yaxis()
     #plt.show()
     return fig
+for j in range():
+    
+    df_final=dataframe_tvd_converter(data_df,dataframe_list[j],kb_th)
+ 
+    st.header("The Input Pressure & Temp. Survey  Data")
+    st.dataframe(df_final) 
 st.text('Pressure & Temperature Plot')
 wellnam='HSD-5'
 y_c=[300,300,300,300]
-fig2=flwing_press_temp_plt(wellnam,df_final,y_c,point)
+fig2=flwing_press_temp_plt(wellnam,dataframe_list,y_c,point,gas_gradient,gas_inj_p)
 
 st.pyplot(fig2,width=20)                             
 
