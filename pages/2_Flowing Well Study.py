@@ -69,7 +69,7 @@ def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
        tvd.append(0)
        data_new['TVDSS']=tvd
     return data_new
-df_final=dataframe_tvd_converter(df,dataframe_list[0],kb_th)
+df_final=dataframe_tvd_converter(data_df,dataframe_list[0],kb_th)
  
 st.header("The Input Pressure & Temp. Survey  Data")
 st.dataframe(df_final)                             
