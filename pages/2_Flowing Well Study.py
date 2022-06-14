@@ -35,15 +35,15 @@ if data_uploader2 is not None:
         temp_df=pd.read_excel(data_uploader2,sheet_name=flw_st_name[i])
         dataframe_list.append(temp_df)  
 def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
-    x=dev_data_df['MDKB']
-    y=dev_data_df['TVDSS']
+    x_1=dev_data_df['MDKB']
+    y_1=dev_data_df['TVDSS']
     data_to_convert=data_to_convert[['DEPTH', 'PRESSURE', 'TEMPERATURE','VALVES', 'GL DEPTH TVDSS']]
     data_new=data_to_convert.copy()
     a=data_to_convert['DEPTH'].dropna(axis=0)*(0.3048)+kbth
     a=a.values
     data_new['MDKB']=a
     tvd_d=[]
-    def tvd_converter(a):
+    def tvd_converter(a,x,y):
   
        i=x[x>a].index[0]-1  
        d=y[i]+((y[i+1]-y[i])*(a-x[i])/(x[i+1]-x[i]))
@@ -53,7 +53,7 @@ def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
     tvd=[]
     for i in range(len(a)):
        if a[i]>kbth:
-          tvd_d1=tvd_converter(a[i])
+          tvd_d1=tvd_converter(a[i],x_1,y_1)
           tvd.append(tvd_d1)
     
        else:
@@ -73,7 +73,18 @@ df_final=dataframe_tvd_converter(data_df,dataframe_list[0],kb_th)
  
 st.header("The Input Pressure & Temp. Survey  Data")
 st.dataframe(df_final)                             
-def flwing_press_temp_plt(wellnam,df_final,y_c):
+def depth_finder(data_df1,inc_ang):
+    x=data_df1['Inc']
+    a=inc_ang
+    names=['Azimuth', 'TVDSS']
+    data=[]
+    for j in range(len(names)):
+        y=df[names[j]]
+        i=x[x>a].index[0]-1
+        d=y[i]+((y[i+1]-y[i])*(a-x[i])/(x[i+1]-x[i]))
+        data.append(d)
+point=depth_finder(df_final,ang_lim)     
+def flwing_press_temp_plt(wellnam,df_final,y_c,ang_point):
     y_v_line=np.arange(200, (df_final['PRESSURE'].values[0]+100), 100)
     c=df_final['GL DEPTH TVDSS'].values
     m=[0,0,0,0]
@@ -84,6 +95,7 @@ def flwing_press_temp_plt(wellnam,df_final,y_c):
 
     ax.set_title(wellnam+' FBHP Pressure with Depth Plot ',fontsize=20)
     ax.plot(df_final['TVDSS'],df_final['PRESSURE'],color='brown',marker="o",lw=2.5,label='Pressure')
+    ax.plot(ang_point,0,color='red')
     ax.plot(m[0]*y_v_line+c[0],y_v_line,color='black',lw=1.5)
     ax.plot(m[1]*y_v_line+c[1],y_v_line,color='black',lw=1.5)
     ax.plot(m[2]*y_v_line+c[2],y_v_line,color='black',lw=1.5)
@@ -130,8 +142,8 @@ def flwing_press_temp_plt(wellnam,df_final,y_c):
     return fig
 st.text('Pressure & Temperature Plot')
 wellnam='HSD-5'
-y_c=[600,600,600,600]
-fig2=flwing_press_temp_plt(wellnam,df_final,y_c)
+y_c=[300,300,300,300]
+fig2=flwing_press_temp_plt(wellnam,df_final,y_c,point)
 
 st.pyplot(fig2,width=20)                             
 
