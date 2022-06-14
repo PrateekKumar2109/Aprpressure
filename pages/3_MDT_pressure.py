@@ -35,7 +35,7 @@ def gradient_function(press,tvd_depth): #this function makes a list of gradients
         grad=slope(press[i],tvd_depth[i],press[i+1],tvd_depth[i+1])
         gradient.append(grad)
      # we add zero to match the length for dataframe
-    #gradient.append(1.4) 
+    gradient.append(1.4) 
     press_grad=gradient.copy()
     return press_grad
 
