@@ -166,10 +166,11 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
 #plt.gca().invert_yaxis()
     #plt.show()
     return fig
+df_final_list=[]
 for j in range(num_figure):
     
-    df_final=dataframe_tvd_converter(data_df,dataframe_list[j],kb_th)
- 
+    df_final_temp=dataframe_tvd_converter(data_df,dataframe_list[j],kb_th)
+    df_final_list.append(df_final_temp)
     st.header("The Input Pressure & Temp. Survey  Data")
     st.dataframe(df_final) 
 st.text('Pressure & Temperature Plot')
@@ -177,7 +178,7 @@ wellnam='HSD-5'
 y_c=[300,300,300,300]
 point=depth_finder(data_df,ang_lim)
 
-fig2=flwing_press_temp_plt(wellnam,dataframe_list,y_c,point,gas_gradient,gas_inj_p,choice,num_figure)
+fig2=flwing_press_temp_plt(wellnam,df_final_list,y_c,point,gas_gradient,gas_inj_p,choice,num_figure)
 
 st.pyplot(fig2,width=20)                             
 
