@@ -95,12 +95,12 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
     m=[0,0,0,0]
     headings=df_final['VALVES'].values
     
-    fig=plt.figure(figsize=(16,18),dpi=70)
+    fig=plt.figure(figsize=(16,18),dpi=90)
     ax = fig.add_subplot(211)
 
     ax.set_title(wellnam+' FBHP Pressure with Depth Plot ',fontsize=20)
     ax.plot(x_v_line,gas_grad*x_v_line+gip,color='black',lw=1.5)
-    ax.plot(ang_point,0,color='red')
+    ax.plot(ang_point,300,color='red'marker='o',markersize=16)
     ax.plot(m[0]*y_v_line+c[0],y_v_line,color='black',lw=1.5)
     ax.plot(m[1]*y_v_line+c[1],y_v_line,color='black',lw=1.5)
     ax.plot(m[2]*y_v_line+c[2],y_v_line,color='black',lw=1.5)
