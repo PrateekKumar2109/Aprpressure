@@ -70,7 +70,7 @@ def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
        data_new['TVDSS']=tvd
     return data_new
  df_final=dataframe_tvd_converter(df,dataframe_list[0],kb_th)
- df_final
+ 
  st.header("The Input Pressure & Temp. Survey  Data")
  st.dataframe(df_final)                             
  def flwing_press_temp_plt(wellnam,df_final,y_c):
