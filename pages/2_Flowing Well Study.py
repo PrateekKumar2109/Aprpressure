@@ -13,6 +13,8 @@ st.sidebar.header("User input parameter")
 kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
 gas_gradient=st.sidebar.slider('Injection Gas Grad',0.0,0.4,value=0.1)
 gas_inj_p=st.sidebar.slider('Gas Injection Pressure',200,1200,value=400)
+activities=['Pressure','Temperature','Both']
+choice=st.sidebar.selectbox("Select Activity", activities)
 num_fgs=st.sidebar.slider('Number of Grad',1,7,value=2)
 num_fgs=num_fgs-1
 kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
@@ -84,7 +86,7 @@ def depth_finder(data_df1,inc_ang):
         d=y[i]+((y[i+1]-y[i])*(a-x[i])/(x[i+1]-x[i]))
         data.append(d)
     
-def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip):
+def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choice1):
     df_final=df_final_list[0]
     y_v_line=np.arange(200, (df_final['PRESSURE'].values[0]+100), 100)
     x_v_line=np.arange(200, (df_final['TVDSS'].values[0]+100), 100)
@@ -126,13 +128,25 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip):
     ax2=ax.twinx()
     label_wekk_p=[]
     label_wekk_t=[] 
-    for p in range(len(flw_st_name)):
+    
+    for p in range(len(num_fgs)):
         label_wekk_p.append(flw_st_name[p]+' Pressure')
         label_wekk_t.append(flw_st_name[p]+' Temperature')
-    for k in range(len(flw_st_name)):
-        ax.plot(df_final_list[k]['TVDSS'],df_final_list[k]['PRESSURE'],marker="o",lw=2.5,label=label_wekk_p[k])
-    for l in range(len(flw_st_name)):
-        ax.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
+    
+    if choice1=='Pressure':
+        for k in range(len(num_fgs)):
+           ax.plot(df_final_list[k]['TVDSS'],df_final_list[k]['PRESSURE'],marker="o",lw=2.5,label=label_wekk_p[k])
+    
+    elif choice1=='Temperature':   
+        for l in range(len(num_fgs)):
+           ax.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
+    
+    elif choice1=='Both':   
+        for k in range(len(num_fgs)):
+           ax.plot(df_final_list[k]['TVDSS'],df_final_list[k]['PRESSURE'],marker="o",lw=2.5,label=label_wekk_p[k])
+        for l in range(len(num_fgs)):
+           ax.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
+   
     ax2.plot(df_final['TVDSS'],df_final[],color="blue",marker="o",lw=2.5,label='Temperature')
     ax2.set_ylim([50,(df_final['TEMPERATURE'].values[0]+50)])
     ax2.set_xlim([0,(df_final['TVDSS'].values[0]+100)])
@@ -151,7 +165,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip):
 #plt.gca().invert_yaxis()
     #plt.show()
     return fig
-for j in range():
+for j in range(len(num_fgs)):
     
     df_final=dataframe_tvd_converter(data_df,dataframe_list[j],kb_th)
  
@@ -160,7 +174,7 @@ for j in range():
 st.text('Pressure & Temperature Plot')
 wellnam='HSD-5'
 y_c=[300,300,300,300]
-fig2=flwing_press_temp_plt(wellnam,dataframe_list,y_c,point,gas_gradient,gas_inj_p)
+fig2=flwing_press_temp_plt(wellnam,dataframe_list,y_c,point,gas_gradient,gas_inj_p,choice)
 
 st.pyplot(fig2,width=20)                             
 
