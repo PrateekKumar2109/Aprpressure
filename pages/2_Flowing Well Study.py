@@ -17,7 +17,7 @@ num_figure=st.sidebar.slider('Number of Surveys',1,7,value=2)
 activities=['Pressure','Temperature','Both']
 choice=st.sidebar.selectbox("Select Activity", activities)
 
-num_fgs=num_fgs-1
+num_figure=num_figure-1
 kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
 ang_lim=st.sidebar.slider('Maximum angle for tool',40,90,value=65)
 st.header("Upload the Deviation data file here ")
