@@ -172,7 +172,7 @@ for j in range(num_figure):
     df_final_temp=dataframe_tvd_converter(data_df,dataframe_list[j],kb_th)
     df_final_list.append(df_final_temp)
     st.header("The Input Pressure & Temp. Survey  Data")
-    st.dataframe(df_final) 
+    st.dataframe(df_final_temp) 
 st.text('Pressure & Temperature Plot')
 wellnam='HSD-5'
 y_c=[300,300,300,300]
