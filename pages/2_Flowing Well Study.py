@@ -27,7 +27,7 @@ st.markdown(" The file format is  columns Depth MDKB  in md-ft, pressure & tempe
 data_uploader2 = st.file_uploader("upload file 2", type={"csv", "txt",'xlsx'})
 if data_uploader2 is not None:
     
-    wb=openpyxl.load_workbook((data_uploader2)
+    wb=openpyxl.load_workbook(data_uploader2)
     flw_st_name=wb.sheetnames
     dataframe_list=[]
     for i in range(len(flw_st_name)):
