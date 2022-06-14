@@ -69,11 +69,11 @@ def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
        tvd.append(0)
        data_new['TVDSS']=tvd
     return data_new
- df_final=dataframe_tvd_converter(df,dataframe_list[0],kb_th)
+df_final=dataframe_tvd_converter(df,dataframe_list[0],kb_th)
  
- st.header("The Input Pressure & Temp. Survey  Data")
- st.dataframe(df_final)                             
- def flwing_press_temp_plt(wellnam,df_final,y_c):
+st.header("The Input Pressure & Temp. Survey  Data")
+st.dataframe(df_final)                             
+def flwing_press_temp_plt(wellnam,df_final,y_c):
     y_v_line=np.arange(200, (df_final['PRESSURE'].values[0]+100), 100)
     c=df_final['GL DEPTH TVDSS'].values
     m=[0,0,0,0]
