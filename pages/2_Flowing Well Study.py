@@ -140,13 +140,13 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
     
     elif choice1=='Temperature':   
         for l in range(num_fgs):
-           ax.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
+           ax2.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
     
     elif choice1=='Both':   
         for k in range(num_fgs):
            ax.plot(df_final_list[k]['TVDSS'],df_final_list[k]['PRESSURE'],marker="o",lw=2.5,label=label_wekk_p[k])
         for l in range(num_fgs):
-           ax.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
+           ax2.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
    
     
     ax2.set_ylim([50,(df_final['TEMPERATURE'].values[0]+50)])
