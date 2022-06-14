@@ -13,7 +13,7 @@ st.sidebar.header("User input parameter")
 
 kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
 
-
+total_depth_c=st.sidebar.slider('Graph Depth',0,300,value=150)
 gas_gr=st.sidebar.slider('Gas gradient cut off',0.0,0.7,value=0.5)
 water_gr=st.sidebar.slider('Water gradient cut off',0.0,1.8,value=1.4)
 st.header("Upload the MDT Pressure data file here")
@@ -61,7 +61,7 @@ type=[]
 df_final_d=df_final.copy()
 df_final['Fluid type']=fluid_type(gas_gr,water_gr,df_final)
 
-def pressure_plot_down(well_name,dataframe):
+def pressure_plot_down(well_name,dataframe,total_dep_c):
     colors = {'oil':'green', 'gas':'red', 'water':'blue'}
     fig=plt.figure(figsize=(4.6,4.1),dpi=60)
     plt.plot(dataframe['PRESSURE'],dataframe['TVDSS'],color='black',lw=1,label='Pressure')
@@ -69,7 +69,7 @@ def pressure_plot_down(well_name,dataframe):
     groups = df_final.groupby('Fluid type')
     for name, group in groups:
         plt.scatter(group.PRESSURE, group.TVDSS, label=name,color=colors[name],marker='o',s=18)
-    plt.ylim((dataframe['TVDSS'].values[-1]-100),(dataframe['TVDSS'].values[0]+100))
+    plt.ylim((dataframe['TVDSS'].values[-1]-(total_dep_c/2)),(dataframe['TVDSS'].values[0]+(total_dep_c/2)))
     plt.gca().invert_yaxis()
     plt.ylabel("Depth in TVDSS",color="black",fontsize=9)
     #label_o=' Oil Gradient is '+str(round(a,2))+' psi/m'
@@ -88,5 +88,5 @@ def pressure_plot_down(well_name,dataframe):
     return fig
 
 st.text('Pressure Plot with gradients')
-fig1=pressure_plot_down(wellname[k],df_final)
+fig1=pressure_plot_down(wellname[k],df_final,total_depth_c)
 st.pyplot(fig1,width=30)  
