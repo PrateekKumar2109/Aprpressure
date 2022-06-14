@@ -82,7 +82,7 @@ def depth_finder(data_df1,inc_ang):
     names=['TVDSS']
     data=[]
     for j in range(len(names)):
-        y=df[names[j]]
+        y=data_df1[names[j]]
         i=x[x>a].index[0]-1
         d=y[i]+((y[i+1]-y[i])*(a-x[i])/(x[i+1]-x[i]))
         data.append(d)
