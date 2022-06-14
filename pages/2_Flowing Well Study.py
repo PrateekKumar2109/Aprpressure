@@ -87,7 +87,7 @@ def depth_finder(data_df1,inc_ang):
         d=y[i]+((y[i+1]-y[i])*(a-x[i])/(x[i+1]-x[i]))
         data.append(d)
     
-def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choice1,num_figs):
+def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choice1,num_fgs):
     df_final=df_final_list[0]
     y_v_line=np.arange(200, (df_final['PRESSURE'].values[0]+100), 100)
     x_v_line=np.arange(200, (df_final['TVDSS'].values[0]+100), 100)
