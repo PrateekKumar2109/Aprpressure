@@ -166,7 +166,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
 #plt.gca().invert_yaxis()
     #plt.show()
     return fig
-for j in range(num_fgs):
+for j in range(num_figure):
     
     df_final=dataframe_tvd_converter(data_df,dataframe_list[j],kb_th)
  
