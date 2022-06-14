@@ -30,11 +30,12 @@ def slope(x1, y1, x2, y2):#calculates slope on point basis
 df_final=data_df2.copy()
 df_final['TVDSS']=df_final['TVD']-kb
 def gradient_function(press,tvd_depth): #this function makes a list of gradients of each point
+    
     for i in range(len(press)-1):
         grad=slope(press[i],tvd_depth[i],press[i+1],tvd_depth[i+1])
         gradient.append(grad)
-    gradient.append(0) # we add zero to match the length for dataframe
-    #gradient.append(0) 
+     # we add zero to match the length for dataframe
+    #gradient.append(1.4) 
     press_grad=gradient.copy()
     return press_grad
 
