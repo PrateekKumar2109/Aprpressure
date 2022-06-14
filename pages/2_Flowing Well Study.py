@@ -116,7 +116,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
 #ax.set_ylim([-100,(df_final['TVDSS'].values[0]+100)])
 #plt.gca().invert_yaxis()
 #ax.invert_yaxis()
-    ax.legend(loc=1,fontsize='x-large')
+    #ax.legend(loc=1,fontsize='x-large')
 
 
 #ax.set_xlim(['Aug-18', 'Apr-21'])
@@ -155,7 +155,8 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
 #plt.gca().invert_yaxis()
 #ax2.invert_yaxis()
     ax.tick_params(axis='x',which='minor',direction='out',bottom=True,length=5)
-    ax2.legend(loc='upper right', fontsize='x-large',bbox_to_anchor=(0.99, 0.94))
+    ax.legend(loc='upper right', fontsize='x-large',bbox_to_anchor=(0.99, 0.94))
+    ax2.legend(loc='upper right', fontsize='x-large',bbox_to_anchor=(0.99, 0.84))
     ax2.tick_params( axis='y',labelsize=14,direction='out', length=6, width=2, colors='black',
                grid_color='r', grid_alpha=0.5)
     ax2.set_xlabel("Temperature ",color="blue",fontsize=18)
