@@ -95,7 +95,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
     m=[0,0,0,0]
     headings=df_final['VALVES'].values
     
-    fig=plt.figure(figsize=(16,18),dpi=90)
+    fig=plt.figure(figsize=(24,20),dpi=90)
     ax = fig.add_subplot(211)
 
     ax.set_title(wellnam+' FBHP Pressure with Depth Plot ',fontsize=20)
@@ -140,13 +140,13 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
     
     elif choice1=='Temperature':   
         for l in range(num_fgs):
-           ax2.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],lw=2.5,label=label_wekk_t[l])
+           ax2.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
     
     elif choice1=='Both':   
         for k in range(num_fgs):
            ax.plot(df_final_list[k]['TVDSS'],df_final_list[k]['PRESSURE'],marker="v",lw=2.5,label=label_wekk_p[k],markersize=9)
         
-           ax2.plot(df_final_list[k]['TVDSS'],df_final_list[k]['TEMPERATURE'],lw=2.5,label=label_wekk_t[k])
+           ax2.plot(df_final_list[k]['TVDSS'],df_final_list[k]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[k])
    
     
     ax2.set_ylim([(df_final['TEMPERATURE'].values[-1]-50),(df_final['TEMPERATURE'].values[0]+50)])
@@ -181,5 +181,5 @@ point=depth_finder(data_df,ang_lim)
 
 fig2=flwing_press_temp_plt(wellnam,df_final_list,y_c,point,gas_gradient,gas_inj_p,choice,num_figure)
 
-st.pyplot(fig2,width=20)                             
+st.pyplot(fig2,width=25)                             
 
