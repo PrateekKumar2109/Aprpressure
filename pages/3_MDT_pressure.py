@@ -22,6 +22,7 @@ data_uploader2 = st.file_uploader("upload file 2", type={"csv", "txt",'xlsx'})
 if data_uploader2 is not None:
     data_df2 = pd.read_excel(data_uploader2)
     data_df2.dropna(inplace=True)
+    data_df2 = data_df2.astype(float)
 st.header("The Input Pressure & Temp. MDT Non-Zero  Data")
 st.dataframe(data_df2)  
 def slope(x1, y1, x2, y2):#calculates slope on point basis
