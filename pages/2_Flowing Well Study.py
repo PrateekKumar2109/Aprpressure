@@ -125,7 +125,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
                grid_color='r', grid_alpha=0.5)
 #ax.set_xticklabels(df_final['PRESSURE'],fontsize=14)
 #ax.set_xticklabels(fontsize=14)
-    ax.set_xlabel(label="Depth in TVDSS",color="black",fontsize=18)
+    ax.set_xlabel(xlabel="Depth in TVDSS",color="black",fontsize=18)
     ax2=ax.twinx()
     label_wekk_p=[]
     label_wekk_t=[] 
