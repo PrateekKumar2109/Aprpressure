@@ -149,7 +149,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
            ax2.plot(df_final_list[k]['TVDSS'],df_final_list[k]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[k])
    
     
-    ax2.set_ylim([(df_final['TEMPERATURE'].values[-1]-50),(df_final['TEMPERATURE'].values[0]+50)])
+    ax2.set_ylim([(df_final['TEMPERATURE'].values[-1]-10),(df_final['TEMPERATURE'].values[0]+10)])
     ax2.set_xlim([0,(df_final['TVDSS'].values[0]+100)])
 #ax2.set_ylim([-100,(df_final['TVDSS'].values[0]+100)])
 #plt.gca().invert_yaxis()
