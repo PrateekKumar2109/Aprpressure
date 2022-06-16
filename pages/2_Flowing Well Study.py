@@ -139,7 +139,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
     label_wekk_t=[] 
     
     for p in range(num_fgs):
-        label_wekk.append(flw_st_name[p])
+        label_wekk.append(flw_st_name[p]+" grad is  ")
         label_wekk_p.append(flw_st_name[p]+' Pressure')
         label_wekk_t.append(flw_st_name[p]+' Temperature')
     
