@@ -5,8 +5,12 @@ import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
 import os
+st.set_page_config(
+    page_title="""Flowing  Well Study Interpretation Web Application""",
+    page_icon="✅",
+    layout="wide",
+)
 
-st.title("""Flowing  Well Study Interpretation Web Application""")
 wellname=['Well_1']
 
 st.header("Upload the Deviation data file here ")
