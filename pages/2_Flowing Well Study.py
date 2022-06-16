@@ -42,7 +42,7 @@ ang_lim=st.sidebar.slider('Inclination angle Cut',40,90,value=65)
 kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
 
 kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
-grad_y=np.arange(start=10, stop=200, step=num_figure)
+grad_y=np.arange(start=10, stop=400, step=num_figure)#spacing in gradients
 def slope(x1, y1, x2, y2):#calculates slope on point basis
   s = (y2-y1)/(x2-x1)
   return s
@@ -148,7 +148,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
            sl=slope(df_final_list[k]['TVDSS'].values[-1], df_final_list[k]['PRESSURE'].values[-1]
                  , df_final_list[k]['TVDSS'].values[0],df_final_list[k]['PRESSURE'].values[0])
            sl= str(round(sl,2))+' psi/m'
-           ax.text((df_final_list[k]['TVDSS'].values[-1]-100),(int(df_final_list[k]['PRESSURE'].values[-1])+int(grad_y[k])),s=(label_wekk[k]+sl),fontsize='x-large')
+           ax.text((df_final_list[k]['TVDSS'].values[-1]-200),(int(df_final_list[k]['PRESSURE'].values[-1])+int(grad_y[k])),s=(label_wekk[k]+sl),fontsize='x-large')
            #ax.plot(df_final_list[k]['TVDSS'].values,df_final_list[k]['PRESSURE'],marker="v",lw=2.5,label=label_wekk_p[k],markersize=9)
     elif choice1=='Temperature':   
         for l in range(num_fgs):
@@ -160,7 +160,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
            sl=slope(df_final_list[k]['TVDSS'].values[-1], df_final_list[k]['PRESSURE'].values[-1]
                  , df_final_list[k]['TVDSS'].values[0],df_final_list[k]['PRESSURE'].values[0])
            sl=round(sl,2)
-           ax.text((df_final_list[k]['TVDSS'].values[-1]-100),(int(df_final_list[k]['PRESSURE'].values[-1])+int(grad_y[k])),s=(label_wekk[k]+sl),fontsize='x-large')
+           ax.text((df_final_list[k]['TVDSS'].values[-1]-200),(int(df_final_list[k]['PRESSURE'].values[-1])+int(grad_y[k])),s=(label_wekk[k]+sl),fontsize='x-large')
            ax2.plot(df_final_list[k]['TVDSS'],df_final_list[k]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[k])
    
     
