@@ -139,7 +139,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
     label_wekk_t=[] 
     
     for p in range(num_fgs):
-        label_wekk.append(flw_st_name[p]+" grad is  ")
+        label_wekk.append(flw_st_name[p]+" grad.  ")
         label_wekk_p.append(flw_st_name[p]+' Pressure')
         label_wekk_t.append(flw_st_name[p]+' Temperature')
     
@@ -149,7 +149,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
            sl=slope(df_final_list[k]['TVDSS'].values[-1], df_final_list[k]['PRESSURE'].values[-1]
                  , df_final_list[k]['TVDSS'].values[0],df_final_list[k]['PRESSURE'].values[0])
            sl= str(round(sl,2))+' psi/m'
-           ax.text((df_final_list[k]['TVDSS'].values[-1]-200),(int(df_final_list[k]['PRESSURE'].values[-1])+int(grad_y[k])),s=(label_wekk[k]+sl),fontsize='x-large')
+           ax.text((df_final_list[k]['TVDSS'].values[-1]-200),(int(df_final['PRESSURE'].values[0])+int(grad_y[k])),s=(label_wekk[k]+sl),fontsize='x-large')
            #ax.plot(df_final_list[k]['TVDSS'].values,df_final_list[k]['PRESSURE'],marker="v",lw=2.5,label=label_wekk_p[k],markersize=9)
     elif choice1=='Temperature':   
         for l in range(num_fgs):
@@ -160,7 +160,7 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
            ax.plot(df_final_list[k]['TVDSS'],df_final_list[k]['PRESSURE'],marker="v",lw=2.5,label=label_wekk_p[k],markersize=9)
            sl=slope(df_final_list[k]['TVDSS'].values[-1], df_final_list[k]['PRESSURE'].values[-1]
                  , df_final_list[k]['TVDSS'].values[0],df_final_list[k]['PRESSURE'].values[0])
-           sl=round(sl,2)
+           sl=str(round(sl,2))+' psi/m'
            ax.text((df_final_list[k]['TVDSS'].values[-1]-200),(int(df_final_list[k]['PRESSURE'].values[-1])+int(grad_y[k])),s=(label_wekk[k]+sl),fontsize='x-large')
            ax2.plot(df_final_list[k]['TVDSS'],df_final_list[k]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[k])
    
