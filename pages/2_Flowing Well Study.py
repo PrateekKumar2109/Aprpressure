@@ -30,7 +30,8 @@ if data_uploader2 is not None:
         temp_df=pd.read_excel(data_uploader2,sheet_name=flw_st_name[i])
         dataframe_list.append(temp_df)  
 st.sidebar.header("User input parameter")
-num_surveys=st.sidebar.multiselect("Select Survey data for analysis",options=flw_st_name,default=flw_st_name[0:2])
+flw_st_nam=np.array(flw_st_name)
+num_surveys=st.sidebar.multiselect("Select Survey data for analysis",options=flw_st_nam,default=flw_st_name[0:2])
 num_figure=len(num_surveys)
 activities=['Pressure','Temperature','Both']
 choice=st.sidebar.selectbox("Select Parameter", activities)
