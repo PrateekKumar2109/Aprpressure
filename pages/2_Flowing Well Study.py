@@ -46,7 +46,7 @@ kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
 grad_y=np.array([300,400,460,510,560])
 def slope(x1, y1, x2, y2):#calculates slope on point basis
   s = (y2-y1)/(x2-x1)
-  return 1/s
+  return (1/s)
 def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
     x_1=dev_data_df['MDKB']
     y_1=dev_data_df['TVDSS']
