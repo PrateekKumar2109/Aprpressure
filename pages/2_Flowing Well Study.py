@@ -42,7 +42,7 @@ choice=st.sidebar.selectbox("Select Parameter", activities)
 gas_gradient=st.sidebar.slider('Injection Gas Grad',0.0,0.4,value=0.1)
 gas_inj_p=st.sidebar.number_input('Enter the Gas Injection Pressure(GIP) in psi',step=10)
 #gas_inj_p=st.sidebar.slider('Gas Injection Pressure',400,1400,value=600)
-ang_lim=st.sidebar.slider('Inclination angle Cut',40,90,value=65)
+ang_lim=st.sidebar.slider('Inclination angle CutOff',40,90,value=65)
 kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
 
 kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
