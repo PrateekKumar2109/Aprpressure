@@ -43,7 +43,9 @@ kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
 
 kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
 
-
+def slope(x1, y1, x2, y2):#calculates slope on point basis
+  s = (y2-y1)/(x2-x1)
+  return s
 def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
     x_1=dev_data_df['MDKB']
     y_1=dev_data_df['TVDSS']
@@ -141,7 +143,10 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
     if choice1=='Pressure':
         for k in range(num_fgs):
            ax.plot(df_final_list[k]['TVDSS'],df_final_list[k]['PRESSURE'],marker="v",lw=2.5,label=label_wekk_p[k],markersize=9)
-    
+           sl=slope(df_final_list[k]['TVDSS'].values[-1], df_final_list[k]['PRESSURE'].values[-1]
+                 , df_final_list[k]['TVDSS'].values[0],df_final_list[k]['PRESSURE'].values[-1])
+           ax.text((df_final_list[k]['TVDSS'].values[-1]-100),df_final_list[k]['PRESSURE'].values[-1],s=sl,fontsize='x-large')
+           #ax.plot(df_final_list[k]['TVDSS'].values,df_final_list[k]['PRESSURE'],marker="v",lw=2.5,label=label_wekk_p[k],markersize=9)
     elif choice1=='Temperature':   
         for l in range(num_fgs):
            ax2.plot(df_final_list[l]['TVDSS'],df_final_list[l]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[l])
@@ -149,7 +154,9 @@ def flwing_press_temp_plt(wellnam,df_final_list,y_c,ang_point,gas_grad,gip,choic
     elif choice1=='Both':   
         for k in range(num_fgs):
            ax.plot(df_final_list[k]['TVDSS'],df_final_list[k]['PRESSURE'],marker="v",lw=2.5,label=label_wekk_p[k],markersize=9)
-        
+           sl=slope(df_final_list[k]['TVDSS'].values[-1], df_final_list[k]['PRESSURE'].values[-1]
+                 , df_final_list[k]['TVDSS'].values[0],df_final_list[k]['PRESSURE'].values[-1])
+           ax.text((df_final_list[k]['TVDSS'].values[-1]-100),df_final_list[k]['PRESSURE'].values[-1],s=sl,fontsize='x-large')
            ax2.plot(df_final_list[k]['TVDSS'],df_final_list[k]['TEMPERATURE'],marker="o",lw=2.5,label=label_wekk_t[k])
    
     
