@@ -42,7 +42,7 @@ ang_lim=st.sidebar.slider('Inclination angle Cut',40,90,value=65)
 kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
 
 kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
-grad_y=np.arange(start=10, stop=800, step=num_figure)#spacing in gradients
+grad_y=np.arange(start=50, stop=500, step=50)#spacing in gradients
 def slope(x1, y1, x2, y2):#calculates slope on point basis
   s = (y2-y1)/(x2-x1)
   return s
