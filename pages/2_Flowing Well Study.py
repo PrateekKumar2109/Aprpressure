@@ -8,28 +8,16 @@ import os
 
 st.title("""Flowing  Well Study Interpretation Web Application""")
 wellname=['Well_1']
-st.sidebar.header("User input parameter")
 
-kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
-gas_gradient=st.sidebar.slider('Injection Gas Grad',0.0,0.4,value=0.1)
-gas_inj_p=st.sidebar.number_input('Enter the Gas Injection Pressure(GIP) in psi',step=10)
-#gas_inj_p=st.sidebar.slider('Gas Injection Pressure',400,1400,value=600)
-num_figure=st.sidebar.slider('Number of Surveys',1,7,value=2)
-activities=['Pressure','Temperature','Both']
-choice=st.sidebar.selectbox("Select Activity", activities)
-
-
-kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
-ang_lim=st.sidebar.slider('Maximum angle for tool',40,90,value=65)
 st.header("Upload the Deviation data file here ")
 st.markdown(" The file format is  MDKB in m,TVDSSin m, Azimuth & Inclination")
 data_uploader = st.file_uploader("upload file", type={"csv", "txt"})
 if data_uploader is not None:
     data_df = pd.read_csv(data_uploader)
     #data_df['TVDSS']=data_df["TVDKB"]-kb
-st.header("The Input Deviation Data ")
+st.header("The Input Well Deviation Data ")
 st.dataframe(data_df)
-st.header("Upload the Flowing  data file here")
+st.header("Upload the FLGR Survey  data file here")
 st.markdown(" The file format is  columns Depth MDKB  in md-ft, pressure & temperature")
 data_uploader2 = st.file_uploader("upload file 2", type={"csv", "txt",'xlsx'})
 if data_uploader2 is not None:
@@ -41,6 +29,20 @@ if data_uploader2 is not None:
     
         temp_df=pd.read_excel(data_uploader2,sheet_name=flw_st_name[i])
         dataframe_list.append(temp_df)  
+st.sidebar.header("User input parameter")
+num_surveys=st.sidebar.multiselect("Select Survey data for analysis",options=flw_st_name,default=flw_st_name[0:2])
+num_figure=len(num_surveys)
+activities=['Pressure','Temperature','Both']
+choice=st.sidebar.selectbox("Select Parameter", activities)
+gas_gradient=st.sidebar.slider('Injection Gas Grad',0.0,0.4,value=0.1)
+gas_inj_p=st.sidebar.number_input('Enter the Gas Injection Pressure(GIP) in psi',step=10)
+#gas_inj_p=st.sidebar.slider('Gas Injection Pressure',400,1400,value=600)
+ang_lim=st.sidebar.slider('Inclination angle Cut',40,90,value=65)
+kb=st.sidebar.slider('KB(Kelly Bushing)in m',30.5,45.5,value=36.72)
+
+kb_th=st.sidebar.slider('KB_TH distance in m',8.5,25.5,value=17.9)
+
+
 def dataframe_tvd_converter(dev_data_df,data_to_convert,kbth):
     x_1=dev_data_df['MDKB']
     y_1=dev_data_df['TVDSS']
