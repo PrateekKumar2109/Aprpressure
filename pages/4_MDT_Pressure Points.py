@@ -102,8 +102,8 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
                  min_resistivity=0.2, max_resistivity=200, 
                  color_GR='green', color_resistivity='black', 
                  color_RHOB='red', color_NPHI='blue',
-                 figsize=(12,12), tight_layout=1, 
-                 title_size=15, title_height=1.05):
+                 figsize=(20,14), tight_layout=1, 
+                 title_size=18, title_height=1.05):
    
   import matplotlib.pyplot as plt
   from matplotlib.ticker import AutoMinorLocator  
@@ -133,7 +133,7 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   gr.set_ylim(max_depth, min_depth)
   gr.spines['top'].set_position(('outward',10))
   gr.tick_params(axis='x',colors=color_GR)
-  gr.plot(df[column_GR], df[column_depth], color=color_GR)  
+  gr.plot(df[column_GR], df[column_depth], color=color_GR,lw=2.5)  
   gr.plot(df[column_GR], df[column_depth], color=color_GR) 
   gr.minorticks_on()
   gr.xaxis.grid(which='major', linestyle='-', linewidth='1', color='brown')
@@ -142,8 +142,7 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
         gr.axhline(y=depth_mdt[i],color='chocolate')
   #for i in range(len(depth_mdt_actual)):
   #     gr.axhline(y=depth_mdt_actual[i],color='black')
-  #gr.fill_betweenx(df[column_depth], sand_GR_line, df[column_GR], where=(sand_GR_line>=df[column_GR]), color = 'gold', linewidth=0) # sand
-  #gr.fill_betweenx(df[column_depth], sand_GR_line, df[column_GR], where=(sand_GR_line<df[column_GR]), color = 'lime', linewidth=0) # shale
+ 
 
   # Second Log is Deep Resistivity Resistivity
   ax[1].get_xaxis().set_visible(False)
@@ -155,7 +154,7 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   resistivity.set_ylim(max_depth, min_depth)
   resistivity.spines['top'].set_position(('outward',10))
   resistivity.tick_params(axis='x',colors=color_resistivity)
-  resistivity.semilogx(df[column_resistivity], df[column_depth], color=color_resistivity)    
+  resistivity.semilogx(df[column_resistivity], df[column_depth], color=color_resistivity,lw=2.5)    
 
   resistivity.minorticks_on()
   resistivity.xaxis.grid(which='major', linestyle='-', linewidth='1', color='brown')
@@ -173,7 +172,7 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   nphi.set_ylim(max_depth, min_depth)
   nphi.spines['top'].set_position(('outward',10))
   nphi.tick_params(axis='x',colors='blue')
-  nphi.plot(df[column_NPHI], df[column_depth], color=color_NPHI)
+  nphi.plot(df[column_NPHI], df[column_depth], color=color_NPHI,lw=2.5)
 
   nphi.minorticks_on()
   nphi.xaxis.grid(which='major', linestyle='-', linewidth='1', color='brown')
@@ -186,7 +185,7 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   density.set_ylim(max_depth, min_depth)
   density.spines['top'].set_position(('outward',50))
   density.tick_params(axis='x',colors='red')
-  density.plot(df[column_RHOB], df[column_depth], color=color_RHOB)
+  density.plot(df[column_RHOB], df[column_depth], color=color_RHOB,lw=2.5)
 
  
   x2p, _ = (density.transData + nphi.transData.inverted()).transform(np.c_[df[column_RHOB], df[column_depth]]).T
