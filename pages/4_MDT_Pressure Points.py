@@ -109,7 +109,7 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   from matplotlib.ticker import AutoMinorLocator  
 
   fig, ax=plt.subplots(1,3,figsize=(28,22),dpi=55)
-  fig.suptitle(well[0]+'  Well Logs ', size=title_size, y=title_height)
+  fig.suptitle(well[0]+'  Well Logs with Higlighted Pressure Recording Points ', size=title_size, y=title_height)
 
   ax[0].minorticks_on()
   ax[0].grid(which='major', linestyle='-', linewidth='1', color='brown')
