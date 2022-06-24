@@ -10,9 +10,9 @@ import streamlit as st
 import scipy
 from scipy import spatial
 
-st.title("""MDT Presssure Points analysis  """)
+st.title("""Identification of Formation Testing Pressure Points """)
 
-st.header("Upload the  Production  data file here ")
+st.header("Upload the  LWD Log Data File here ")
 st.markdown(" The file format is  standard LAS File")
 
 data_uploader = st.file_uploader("upload file", type={"csv", "txt",'las'})
