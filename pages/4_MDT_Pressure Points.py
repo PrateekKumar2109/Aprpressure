@@ -201,7 +201,7 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   return fig
 depth_mdt_actual_7a9=[2740.03,2726.97,2719.99,2718.49,2717.02,2711.53,2697.99,2683.49]
 depth_mdt_actual_7a8=[1686.56,1687.5,1690.5,1701,1712]
-well_name=['R-7-A-8']
+well_name=['Well_1']
 fig1=log_plot(well_name,temp_df1,depth_df_mdt,depth_mdt_actual_7a8, 'DEPTH', 'GR', 'RT', 'NPHI', 'RHOB', 
              min_depth=1650, max_depth=1720, 
              min_GR=0, max_GR=100, sand_GR_line=50,
