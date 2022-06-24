@@ -31,8 +31,8 @@ if data_uploader is not None:
           temp_df1=temp_df1[['DEPTH','ROP','GR','NPHI','PE','CALI','RHOB','RS','RT','ROP','FEXP','RPM']] 
           std_cali=temp_df1['CALI'].std()
           std_gr=temp_df1['GR'].std()
-          std_p=temp_df1['NPHI'].std()
-          std_d=temp_df1['RHOB'].std()
+          std_p=temp_df1['NPHI'].mean()
+          std_d=temp_df1['RHOB'].mean()
           mean_r=temp_df1['RT'].mean()
           data_df=temp_df1.copy()
 
@@ -45,7 +45,7 @@ limit_gr=st.sidebar.slider('Gamma Ray Limit in  m',0.0,100.0,value=20.4)
 limit_gr=limit_gr*std_gr/100
 limit_d=st.sidebar.slider('Density Limit in  m',0.0,100.0,value=20.5)
 limit_d=limit_d*std_d/100
-limit_p=st.sidebar.slider('Porosity Limit in  m',0.0,100.0,value=25.2)
+limit_p=st.sidebar.slider('Porosity Limit in  m',0.0,100.0,value=65.2)
 limit_p=limit_p*std_p/100
 
 lim_sim_res=st.sidebar.slider('Similarity  in Shallow & Deep Resistivity  m',0.0,10.0,value=3.5)
