@@ -218,6 +218,6 @@ fig1=log_plot(well_name,temp_df1,depth_df_mdt,depth_mdt_actual_7a8, 'DEPTH', 'GR
              max_resistivity=10000,
              figsize=(8,8), title_size=20, title_height=1)
 st.text('Field Performance Since Inception')
-st.set_option('depreciation.showPyplotGlobalUse',False)
+#st.set_option('depreciation.showPyplotGlobalUse',False)
 st.pyplot(fig1,width=25)
  
