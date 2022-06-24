@@ -39,7 +39,7 @@ if data_uploader is not None:
 
 st.sidebar.header("User input parameter")
 step_size=st.sidebar.slider('Interval Analysis Block Size m',0.0,5.0,value=1.0)
-limit_cali=st.sidebar.slider('Calipher Limit in  m',0.0,100.0,value=20)
+limit_cali=st.sidebar.slider('Calipher Limit in  m',0.0,100.0,value=38)
 limit_cali=limit_cali*std_cali/100
 limit_gr=st.sidebar.slider('Gamma Ray Limit in  m',0.0,100.0,value=20)
 limit_gr=limit_gr*std_gr/100
