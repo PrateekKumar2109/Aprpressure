@@ -208,7 +208,7 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   res.grid(which='minor', linestyle=':', linewidth='1', color='black')
 
   #plt.tight_layout(tight_layout)  
-  plt.show()
+  return fig
 depth_mdt_actual_7a9=[2740.03,2726.97,2719.99,2718.49,2717.02,2711.53,2697.99,2683.49]
 depth_mdt_actual_7a8=[1686.56,1687.5,1690.5,1701,1712]
 well_name=['R-7-A-8']
