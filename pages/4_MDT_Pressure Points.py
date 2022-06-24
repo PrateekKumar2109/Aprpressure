@@ -45,8 +45,8 @@ limit_gr=st.sidebar.slider('Gamma Ray Limit in  m',0.0,100.0,value=20.4)
 limit_gr=limit_gr*std_gr/100
 limit_d=st.sidebar.slider('Density Limit in  m',0.0,100.0,value=20.5)
 limit_d=limit_d*std_d/100
-limit_p=st.sidebar.slider('Porosity Limit in  m',0.0,100.0,value=20.2)
-limit_d=limit_p*std_p/100
+limit_p=st.sidebar.slider('Porosity Limit in  m',0.0,100.0,value=25.2)
+limit_p=limit_p*std_p/100
 
 lim_sim_res=st.sidebar.slider('Similarity  in Shallow & Deep Resistivity  m',0.0,10.0,value=3.5)
 lim_sim_res=lim_sim_res*mean_r
