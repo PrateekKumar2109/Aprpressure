@@ -75,7 +75,7 @@ filt_list_ind=filter_list_df(list,limit_cali,limit_gr,limit_d,limit_p,lim_sim_re
 for i in range(len(filt_list_ind)):
      st.header("The Filtered Data points "+str(i))
      ind=filt_list_ind[i]
-     st.dataframe(list[ind])
+     #st.dataframe(list[ind])
  
 def dataframe_final_points(orig_list,index_list):
     list_to=[]
