@@ -104,44 +104,26 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
                  color_RHOB='red', color_NPHI='blue',
                  figsize=(12,12), tight_layout=1, 
                  title_size=15, title_height=1.05):
-  """
-  Producing  log log plot
-
-  Input:
-
-  df is your dataframe
-  column_depth, column_GR, column_resistivity, column_NPHI, column_RHOB
-  are column names that appear in your dataframe (originally from the LAS file)
-
-  specify your depth limits; min_depth and max_depth
-
-  input variables other than above are default. You can specify
-  the values yourselves. 
-
-  Output:
-
-  Fill colors; gold (sand), lime green (non-sand), blue (water-zone), orange (HC-zone)
-  """
-  
+   
   import matplotlib.pyplot as plt
   from matplotlib.ticker import AutoMinorLocator  
 
-  fig, ax=plt.subplots(1,3,figsize=(16,9),dpi=85)
+  fig, ax=plt.subplots(1,3,figsize=(20,14),dpi=85)
   fig.suptitle(well[0]+'  Well Logs ', size=title_size, y=title_height)
 
   ax[0].minorticks_on()
-  ax[0].grid(which='major', linestyle='-', linewidth='0.5', color='brown')
-  ax[0].grid(which='minor', linestyle=':', linewidth='1', color='black')
+  ax[0].grid(which='major', linestyle='-', linewidth='1', color='brown')
+  ax[0].grid(which='minor', linestyle=':', linewidth='1.5', color='black')
 
   ax[1].minorticks_on()
-  ax[1].grid(which='major', linestyle='-', linewidth='0.5', color='brown')
-  ax[1].grid(which='minor', linestyle=':', linewidth='1', color='black')
+  ax[1].grid(which='major', linestyle='-', linewidth='1', color='brown')
+  ax[1].grid(which='minor', linestyle=':', linewidth='1.5', color='black')
 
   ax[2].minorticks_on()
-  ax[2].grid(which='major', linestyle='-', linewidth='0.5', color='brown')
-  ax[2].grid(which='minor', linestyle=':', linewidth='1', color='black')  
+  ax[2].grid(which='major', linestyle='-', linewidth='1', color='brown')
+  ax[2].grid(which='minor', linestyle=':', linewidth='1.5', color='black')  
 
-  # First track: GR
+  # First Log Generally as per industrial standard
   ax[0].get_xaxis().set_visible(False)
   ax[0].invert_yaxis()   
 
@@ -154,8 +136,8 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   gr.plot(df[column_GR], df[column_depth], color=color_GR)  
   gr.plot(df[column_GR], df[column_depth], color=color_GR) 
   gr.minorticks_on()
-  gr.xaxis.grid(which='major', linestyle='-', linewidth='0.5', color='brown')
-  gr.xaxis.grid(which='minor', linestyle=':', linewidth='1', color='black')
+  gr.xaxis.grid(which='major', linestyle='-', linewidth='1', color='brown')
+  gr.xaxis.grid(which='minor', linestyle=':', linewidth='1.5', color='black')
   for i in range(len(depth_mdt)):
         gr.axhline(y=depth_mdt[i],color='chocolate')
   #for i in range(len(depth_mdt_actual)):
@@ -163,23 +145,23 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   #gr.fill_betweenx(df[column_depth], sand_GR_line, df[column_GR], where=(sand_GR_line>=df[column_GR]), color = 'gold', linewidth=0) # sand
   #gr.fill_betweenx(df[column_depth], sand_GR_line, df[column_GR], where=(sand_GR_line<df[column_GR]), color = 'lime', linewidth=0) # shale
 
-  # Second track: Resistivity
+  # Second Log is Deep Resistivity Resistivity
   ax[1].get_xaxis().set_visible(False)
   ax[1].invert_yaxis()   
 
-  res=ax[1].twiny()
-  res.set_xlim(min_resistivity,max_resistivity)
-  res.set_xlabel('Resistivity',color=color_resistivity)
-  res.set_ylim(max_depth, min_depth)
-  res.spines['top'].set_position(('outward',10))
-  res.tick_params(axis='x',colors=color_resistivity)
-  res.semilogx(df[column_resistivity], df[column_depth], color=color_resistivity)    
+  resistivity=ax[1].twiny()
+  resistivity.set_xlim(min_resistivity,max_resistivity)
+  resistivity.set_xlabel('Resistivity',color=color_resistivity)
+  resistivity.set_ylim(max_depth, min_depth)
+  resistivity.spines['top'].set_position(('outward',10))
+  resistivity.tick_params(axis='x',colors=color_resistivity)
+  resistivity.semilogx(df[column_resistivity], df[column_depth], color=color_resistivity)    
 
-  res.minorticks_on()
-  res.xaxis.grid(which='major', linestyle='-', linewidth='0.5', color='brown')
-  res.xaxis.grid(which='minor', linestyle=':', linewidth='1', color='black')   
+  resistivity.minorticks_on()
+  resistivity.xaxis.grid(which='major', linestyle='-', linewidth='1', color='brown')
+  resistivity.xaxis.grid(which='minor', linestyle=':', linewidth='1,5', color='black')   
 
-  # Third track: NPHI and RHOB
+  # Third Log path is for  NPHI and RHOB as per standard convention
   ax[2].get_xaxis().set_visible(False)
   ax[2].invert_yaxis()  
 
@@ -194,30 +176,29 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
   nphi.plot(df[column_NPHI], df[column_depth], color=color_NPHI)
 
   nphi.minorticks_on()
-  nphi.xaxis.grid(which='major', linestyle='-', linewidth='0.5', color='brown')
-  nphi.xaxis.grid(which='minor', linestyle=':', linewidth='1', color='black')     
+  nphi.xaxis.grid(which='major', linestyle='-', linewidth='1', color='brown')
+  nphi.xaxis.grid(which='minor', linestyle=':', linewidth='1.5', color='black')     
 
   ## RHOB curve 
-  rhob=ax[2].twiny()
-  rhob.set_xlim(1.8,2.8)
-  rhob.set_xlabel('RHOB',color='red')
-  rhob.set_ylim(max_depth, min_depth)
-  rhob.spines['top'].set_position(('outward',50))
-  rhob.tick_params(axis='x',colors='red')
-  rhob.plot(df[column_RHOB], df[column_depth], color=color_RHOB)
+  density=ax[2].twiny()
+  density.set_xlim(1.8,2.8)
+  density.set_xlabel('RHOB',color='red')
+  density.set_ylim(max_depth, min_depth)
+  density.spines['top'].set_position(('outward',50))
+  density.tick_params(axis='x',colors='red')
+  density.plot(df[column_RHOB], df[column_depth], color=color_RHOB)
 
-  # solution to produce fill between can be found here:
-  # https://stackoverflow.com/questions/57766457/how-to-plot-fill-betweenx-to-fill-the-area-between-y1-and-y2-with-different-scal
-  x2p, _ = (rhob.transData + nphi.transData.inverted()).transform(np.c_[df[column_RHOB], df[column_depth]]).T
+ 
+  x2p, _ = (density.transData + nphi.transData.inverted()).transform(np.c_[df[column_RHOB], df[column_depth]]).T
   nphi.autoscale(False)
   nphi.fill_betweenx(df[column_depth], df[column_NPHI], x2p, color="orange", alpha=0.4, where=(x2p > df[column_NPHI])) # hydrocarbon
   nphi.fill_betweenx(df[column_depth], df[column_NPHI], x2p, color="blue", alpha=0.4, where=(x2p < df[column_NPHI])) # water
 
-  res.minorticks_on()
-  res.grid(which='major', linestyle='-', linewidth='0.5', color='brown')
-  res.grid(which='minor', linestyle=':', linewidth='1', color='black')
+  resistivity.minorticks_on()
+  resistivity.grid(which='major', linestyle='-', linewidth='1', color='brown')
+  resistivity.grid(which='minor', linestyle=':', linewidth='1.5', color='black')
 
-  #plt.tight_layout(tight_layout)  
+  
   return fig
 depth_mdt_actual_7a9=[2740.03,2726.97,2719.99,2718.49,2717.02,2711.53,2697.99,2683.49]
 depth_mdt_actual_7a8=[1686.56,1687.5,1690.5,1701,1712]
@@ -226,8 +207,8 @@ fig1=log_plot(well_name,temp_df1,depth_df_mdt,depth_mdt_actual_7a8, 'DEPTH', 'GR
              min_depth=1650, max_depth=1720, 
              min_GR=0, max_GR=100, sand_GR_line=50,
              max_resistivity=10000,
-             figsize=(8,8), title_size=20, title_height=1)
-st.text('WEll Data with Highlighted MDT Points')
+             figsize=(20,12), title_size=20, title_height=1)
+st.text('Well Data with Highlighted MDT Points')
 #st.set_option('depreciation.showPyplotGlobalUse',False)
 st.pyplot(fig1,width=25)
  
