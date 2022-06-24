@@ -39,13 +39,13 @@ if data_uploader is not None:
 
 st.sidebar.header("User input parameter")
 step_size=st.sidebar.slider('Interval Analysis Block Size m',0.0,5.0,value=1.0)
-limit_cali=st.sidebar.slider('Calipher Limit in  m',0.0,100.0,value=38)
+limit_cali=st.sidebar.slider('Calipher Limit in  m',0.0,100.0,value=38.5)
 limit_cali=limit_cali*std_cali/100
-limit_gr=st.sidebar.slider('Gamma Ray Limit in  m',0.0,100.0,value=20)
+limit_gr=st.sidebar.slider('Gamma Ray Limit in  m',0.0,100.0,value=20.4)
 limit_gr=limit_gr*std_gr/100
-limit_d=st.sidebar.slider('Density Limit in  m',0.0,100.0,value=20)
+limit_d=st.sidebar.slider('Density Limit in  m',0.0,100.0,value=20.5)
 limit_d=limit_d*std_d/100
-limit_p=st.sidebar.slider('Porosity Limit in  m',0.0,100.0,value=20)
+limit_p=st.sidebar.slider('Porosity Limit in  m',0.0,100.0,value=20.2)
 limit_d=limit_p*std_p/100
 
 lim_sim_res=st.sidebar.slider('Similarity  in Shallow & Deep Resistivity  m',0.0,10.0,value=3.5)
