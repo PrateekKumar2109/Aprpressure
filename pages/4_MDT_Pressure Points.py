@@ -40,7 +40,7 @@ limit_p=st.sidebar.slider('Porosity Limit in  m',0.0,60.0,value=10.8)
 limit_p=limit_p/100
 lim_sim_res=st.sidebar.slider('Similarity  in Shallow & Deep Resistivity  m',0.0,60.0,value=10.8)
 st.header("The Input Well Log Data ")
-st.write(data_df,200,100)
+#st.write(data_df,200,100)
 def making_blocks(df2,step_size,block):
     t_df_list=[]
     depth_min=int(np.amin(df2[['DEPTH']].values))
