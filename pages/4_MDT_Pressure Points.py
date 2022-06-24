@@ -16,6 +16,7 @@ st.markdown(" The file format is  standard Excel File")
 
 data_uploader = st.file_uploader("upload file", type={"csv", "txt",'las'})
 if data_uploader is not None:
+          data_uploader.seek(0)
           log=ls.read(data_uploader)
           temp_df1=log.df()
           temp_df1=temp_df1.reset_index()
