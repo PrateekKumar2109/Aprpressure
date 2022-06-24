@@ -29,17 +29,27 @@ if data_uploader is not None:
           temp_df1=temp_df1.dropna()
 
           temp_df1=temp_df1[['DEPTH','ROP','GR','NPHI','PE','CALI','RHOB','RS','RT','ROP','FEXP','RPM']] 
+          std_cali=temp_df1['CALI'].std()
+          std_gr=temp_df1['GR'].std()
+          std_p=temp_df1['NPHI'].std()
+          std_d=temp_df1['RHOB'].std()
+          mean_r=temp_df1['RT'].mean()
           data_df=temp_df1.copy()
 
 
 st.sidebar.header("User input parameter")
 step_size=st.sidebar.slider('Interval Analysis Block Size m',0.0,5.0,value=1.0)
-limit_cali=st.sidebar.slider('Calipher Limit in  m',0.0,1.4,value=0.05)
-limit_gr=st.sidebar.slider('Gamma Ray Limit in  m',0.0,10.5,value=5.1)
-limit_d=st.sidebar.slider('Density Limit in  m',0.0,10.5,value=5.1)
-limit_p=st.sidebar.slider('Porosity Limit in  m',0.0,60.0,value=10.8)
-limit_p=limit_p/100
-lim_sim_res=st.sidebar.slider('Similarity  in Shallow & Deep Resistivity  m',0.0,60.0,value=10.8)
+limit_cali=st.sidebar.slider('Calipher Limit in  m',0.0,100.0,value=20)
+limit_cali=limit_cali*std_cali/100
+limit_gr=st.sidebar.slider('Gamma Ray Limit in  m',0.0,100.0,value=20)
+limit_gr=limit_gr*std_gr/100
+limit_d=st.sidebar.slider('Density Limit in  m',0.0,100.0,value=20)
+limit_d=limit_d*std_d/100
+limit_p=st.sidebar.slider('Porosity Limit in  m',0.0,100.0,value=20)
+limit_d=limit_p*std_p/100
+
+lim_sim_res=st.sidebar.slider('Similarity  in Shallow & Deep Resistivity  m',0.0,10.0,value=3.5)
+lim_sim_res=lim_sim_res*mean_r
 st.header("The Input Well Log Data ")
 #st.write(data_df,200,100)
 def making_blocks(df2,step_size,block):
