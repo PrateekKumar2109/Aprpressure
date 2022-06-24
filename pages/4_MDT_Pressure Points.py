@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-import scipy
+import scipy.spatial 
 
 st.title("""MDT Presssure Points analysis  """)
 
@@ -59,7 +59,7 @@ def filter_list_df(d_list,thresh_c,thresh_g,thresh_d,thresh_p,thresh_r):
         dev_g=d_list[i]['GR'].std()
         dev_d=d_list[i]['RHOB'].std()
         dev_p=d_list[i]['NPHI'].std()
-        dis_r=scipy.spatial.distance.cdist(
+        dis_r=spatial.distance.cdist(
                 d_list[i]['RS'].values.reshape(-1,len(d_list[i]['RS'].values))
                ,d_list[i]['RT'].values.reshape(-1,len(d_list[i]['RT'].values))
                 )
