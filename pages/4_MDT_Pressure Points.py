@@ -7,7 +7,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-import scipy.spatial 
+import scipy
+from scipy import spatial
 
 st.title("""MDT Presssure Points analysis  """)
 
