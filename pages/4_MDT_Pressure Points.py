@@ -13,7 +13,7 @@ from scipy import spatial
 st.title("""MDT Presssure Points analysis  """)
 
 st.header("Upload the  Production  data file here ")
-st.markdown(" The file format is  standard Excel File")
+st.markdown(" The file format is  standard LAS File")
 
 data_uploader = st.file_uploader("upload file", type={"csv", "txt",'las'})
 if data_uploader is not None:
@@ -217,7 +217,7 @@ fig1=log_plot(well_name,temp_df1,depth_df_mdt,depth_mdt_actual_7a8, 'DEPTH', 'GR
              min_GR=0, max_GR=100, sand_GR_line=50,
              max_resistivity=10000,
              figsize=(8,8), title_size=20, title_height=1)
-st.text('Field Performance Since Inception')
+st.text('WEll Data with Highlighted MDT Points')
 #st.set_option('depreciation.showPyplotGlobalUse',False)
 st.pyplot(fig1,width=25)
  
