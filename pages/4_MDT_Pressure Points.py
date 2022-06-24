@@ -65,10 +65,10 @@ def filter_list_df(d_list,thresh_c,thresh_g,thresh_d,thresh_p,thresh_r):
             cali_list.append(i)
    
     return cali_list      
- list=making_blocks(temp_df1,1,step_size)
- filt_list_ind=filter_list_df(list,limit_cali,limit_gr,limit_d,limit_p,lim_sim_res)
+list=making_blocks(temp_df1,1,step_size)
+filt_list_ind=filter_list_df(list,limit_cali,limit_gr,limit_d,limit_p,lim_sim_res)
  
- for i in range(len(filt_list_ind)):
+for i in range(len(filt_list_ind)):
      st.header("The Filtered Data points "+i)
      ind=filt_list_ind[i]
      st.dataframe(list[ind])
