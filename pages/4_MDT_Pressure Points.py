@@ -102,13 +102,13 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
                  min_resistivity=0.2, max_resistivity=200, 
                  color_GR='green', color_resistivity='black', 
                  color_RHOB='red', color_NPHI='blue',
-                 figsize=(20,14), tight_layout=1, 
+                 figsize=(20,18), tight_layout=1, 
                  title_size=25, title_height=1.2):
    
   import matplotlib.pyplot as plt
   from matplotlib.ticker import AutoMinorLocator  
 
-  fig, ax=plt.subplots(1,3,figsize=(24,18),dpi=85)
+  fig, ax=plt.subplots(1,3,figsize=(24,18),dpi=55)
   fig.suptitle(well[0]+'  Well Logs ', size=title_size, y=title_height)
 
   ax[0].minorticks_on()
@@ -206,8 +206,8 @@ fig1=log_plot(well_name,temp_df1,depth_df_mdt,depth_mdt_actual_7a8, 'DEPTH', 'GR
              min_depth=1650, max_depth=1720, 
              min_GR=0, max_GR=100, sand_GR_line=50,
              max_resistivity=10000,
-             figsize=(20,12), title_size=20, title_height=1)
+             figsize=(20,18), title_size=25, title_height=1)
 st.text('Well Data with Highlighted MDT Points')
 #st.set_option('depreciation.showPyplotGlobalUse',False)
-st.pyplot(fig1,width=25)
+st.pyplot(fig1,width=35)
  
