@@ -159,7 +159,7 @@ def log_plot(well,df,depth_mdt,depth_mdt_actual, column_depth, column_GR, column
 
   resistivity.minorticks_on()
   resistivity.xaxis.grid(which='major', linestyle='-', linewidth='1', color='brown')
-  resistivity.xaxis.grid(which='minor', linestyle=':', linewidth='1,5', color='black')   
+  resistivity.xaxis.grid(which='minor', linestyle=':', linewidth='1.5', color='black')   
 
   # Third Log path is for  NPHI and RHOB as per standard convention
   ax[2].get_xaxis().set_visible(False)
