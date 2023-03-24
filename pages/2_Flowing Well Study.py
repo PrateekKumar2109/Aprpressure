@@ -201,5 +201,5 @@ point=depth_finder(data_df,ang_lim)
 
 fig2=flwing_press_temp_plt(wellnam,df_final_list,y_c,point,gas_gradient,gas_inj_p,choice,num_figure)
 
-st.pyplot(fig2,width=25)                             
+st.pyplot(fig2)                             
 
