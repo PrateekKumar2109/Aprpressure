@@ -1,9 +1,9 @@
 
-numpy==1.22.4
-pandas==1.4.2
+numpy
+pandas
 #pydeck==0.7.1
 openpyxl
-matplotlib==3.3.2
+matplotlib
 #./streamlit-1.9.0-py2.py3-none-any.whl
-lasio==0.28
-scipy==1.8.1
+lasio
+scipy
