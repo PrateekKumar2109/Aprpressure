@@ -91,4 +91,4 @@ def pressure_plot_down(well_name,dataframe,total_dep_c):
 
 st.text('Pressure Plot with gradients')
 fig1=pressure_plot_down(wellname[k],df_final,total_depth_c)
-st.pyplot(fig1,width=30)  
+st.pyplot(fig1)  
